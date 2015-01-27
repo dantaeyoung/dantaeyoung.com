@@ -5,6 +5,7 @@
 <link href='css/dantaeyoung.css' rel='stylesheet' type='text/css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="js/jquery.cursometer.1.0.0.min.js"></script>
 <script src="js/gradientGenerator.js"></script>
 <script src="js/gyro.js"></script>
 <script>
@@ -36,9 +37,80 @@
 		var thisTerm = $("<div class='term'>" + term + "</div>").hide().appendTo(selector).fadeIn(100);//.fadeOut(3000, function() { $(this).remove(); });
 	}
 
+    var mrefreshinterval = 500; // update display every 500ms
+    var lastmousex=-1; 
+    var lastmousey=-1;
+    var lastmousetime;
+    var mousetravel = 0;
+
+	var mdraw = function() {
+        var md = new Date();
+        var timenow = md.getTime();
+        if (lastmousetime && lastmousetime!=timenow) {
+            var pps = Math.round(mousetravel / (timenow - lastmousetime) * 1000);
+            mousetravel = 0;
+        }
+        lastmousetime = timenow;
+		fadeDesktop();
+        setTimeout(mdraw, mrefreshinterval);
+    }
+
+
+    $('html').mousemove(function(e) {
+        var mousex = e.pageX;
+        var mousey = e.pageY;
+        if (lastmousex > -1) {
+            mousetravel += Math.max( Math.abs(mousex-lastmousex), Math.abs(mousey-lastmousey) );
+        }
+        lastmousex = mousex;
+        lastmousey = mousey;
+    });
+ 
+
+
+	function startCursing() {
+		console.log("yo");
+		window.fading = false;
+		window.currspeed = 0;
+
+		setTimeout(mdraw, mrefreshinterval); 
+
+		$("html").mousemove(function(e) {
+			if(mousetravel < 10) {
+				console.log("too slow"); //window.fadeElem = $(".text").fadeTo(1000, 0, function() { window.fading = false; });
+			} else {
+				try {
+					window.fadeElem.stop();
+					window.fading = false;
+				} catch (e) {
+				}
+				if(window.fading == false)  {
+					window.fading = true;
+					$(".text").fadeTo(100, 1, function() { window.fading = false; });
+				}
+				
+			}
+		});
+	}
+
+	function fadeDesktop() {
+		console.log(mousetravel);
+		if(window.fading == false)  {
+			window.fading = true;
+			if(mousetravel < 10) {
+				if($(".text").css("opacity") != 0) {
+					window.fadeElem = $(".text").fadeTo(1000, 0, function() { window.fading = false; });
+				}
+			}
+		}
+	}
+
+
 	$(document).ready(function() {
+
 		window.mouseCount = 0;
 		window.interestedN = 0;
+
 		$("body").mousemove(function(e) {
 			window.mouseCount += 1;
 
@@ -64,41 +136,51 @@
 			colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
 		}).css("opacity", 0);;
 
+
+		window.gyroCount = 0;
+		window.wasFlat = true;
+		gyro.frequency = 200;
+
+		gyro.startTracking(function(o) { 
+			if(o.beta == null) {
+
+				if(typeof(window.isDesktop) === 'undefined') {
+					window.isDesktop = true;
+					startCursing();
+				}
+
+			} else {
+
+				window.gyroCount += 1;
+
+				if(o.beta < 40.5) {
+					// flat
+					window.wasFlat = true;
+				} else {
+					// held
+					if(window.wasFlat) {
+						window.wasFlat = false;
+						var thisgradient = _.sample(gradients);
+						$("#background").gradientGenerator({
+							direction: thisgradient[0],
+							colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
+						});
+					}
+
+					if(window.gyroCount % 5 == 0) {
+						$("#interested_in").fadeIn(500);
+						termFade("#interested_in", interested_in[window.interestedN = (window.interestedN + 1) % (interested_in.length - 1)]);
+					}
+				}
+
+				$(".text").fadeTo(100,(((o.beta - 0) / 30) * 1));
+				$("#background").fadeTo(100,1- (((o.beta - 0) / 30) * 1));
+
+			}
+		});
+
 	});
 
-	window.gyroCount = 0;
-	window.wasFlat = true;
-	gyro.frequency = 200;
-    gyro.startTracking(function(o) { 
-		if(o.beta != null) {
-		
-		window.gyroCount += 1;
-
-		if(o.beta < 40.5) {
-			// flat
-			window.wasFlat = true;
-		} else {
-			// held
-			if(window.wasFlat) {
-				window.wasFlat = false;
-				var thisgradient = _.sample(gradients);
-				$("#background").gradientGenerator({
-					direction: thisgradient[0],
-					colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
-				});
-			}
-
-			if(window.gyroCount % 5 == 0) {
-				$("#interested_in").fadeIn(500);
-				termFade("#interested_in", interested_in[window.interestedN = (window.interestedN + 1) % (interested_in.length - 1)]);
-			}
-		}
-
-		$(".text").fadeTo(100,(((o.beta - 0) / 30) * 1));
-		$("#background").fadeTo(100,1- (((o.beta - 0) / 30) * 1));
-
-    }
-});
 </script>
 </head>
 <body>
@@ -112,7 +194,6 @@
 			<p>- operates at the intersection of architecture, technology, community.<br>
 			- is interested in <span id="interested_in"></span><br>
 			</p>
-
 			<a href="http://www.textfiles.com/underconstruction/">REPRESENTATION<br>
 			UNDER<br>
 			CONSTRUCTION. <br></a>
