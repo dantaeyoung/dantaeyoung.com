@@ -1,0 +1,176 @@
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
+<link href='css/dantaeyoung.css' rel='stylesheet' type='text/css'>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="js/gradientGenerator.js"></script>
+<script src="js/gyro.js"></script>
+<script>
+	var interested_in = [
+	"critical engineering", "consequentialist + idealistic architecture", "activist real estate", "spatial manifestations of data", 
+	"post-marxist actors, networks, and their theories", "theories, heuristics, and tacit information", "computer science as philosophy",
+	"the social usage of space as complexity, ecology", "actually trying to make things (happen)", "non-hierarchical modes of collaboration", 
+	"spaces for communion/ownership",
+	"people who read the source in websites and will notice that this never gets printed"
+	]
+
+	var gradients = [
+["68deg", "#a4d1fb", "#3f3970"],
+["320deg", "#e37800", "#ebf0bf"],
+["96deg", "#26ffbc", "#19890c"],
+["200deg", "#7d26ff", "#f3e5fc"],
+["95deg", "#f8bc6d", "#969617"],
+["100deg", "#40dbf0", "#047a6f"],
+["320deg", "#efafdf", "#d6863d"],
+["92deg", "#f45f00", "#e750dd"],
+["55deg", "#5f3cff", "#1affe8"],
+["200deg", "#3d17ed", "#33d2a7"],
+["75deg", "#95fd56", "#014423"],
+["30deg", "#ff3c71", "#624545"]
+]
+
+
+	function termFade(selector, term) {
+		$(".term").fadeOut(200, function() { $(this).remove(); });
+		var thisTerm = $("<div class='term'>" + term + "</div>").hide().appendTo(selector).fadeIn(100);//.fadeOut(3000, function() { $(this).remove(); });
+	}
+
+	$(document).ready(function() {
+		window.mouseCount = 0;
+		window.interestedN = 0;
+		$("body").mousemove(function(e) {
+			window.mouseCount += 1;
+
+/*			var newInterested = (Math.floor(e.timeStamp / 1000 % (interested_in.length - 1)));
+			if(window.thisInterested != newInterested) {
+				window.thisInterested = newInterested;*/
+				if(window.mouseCount % 10 == 0) {
+					$("#interested_in").fadeIn(500);
+					termFade("#interested_in", interested_in[window.interestedN = (window.interestedN + 1) % (interested_in.length - 1)]);
+				}
+				if(window.mouseCount % 100 == 0) {
+					var thisgradient = _.sample(gradients);
+					console.log("====CHANGE");
+					$("#background").gradientGenerator({
+						direction: thisgradient[0],
+						colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
+					});
+				}
+				$("#background").css("opacity", ((Math.cos((window.mouseCount + 50) % 100 / 100 * 2 * Math.PI) + 1) / 3))
+console.log(window.mouseCount)
+// map 0 to 100 to 0 to 2pi
+			console.log($("#background").css("opacity"));
+
+		});
+
+
+		var thisgradient = _.sample(gradients);
+		$("#background").gradientGenerator({
+			direction: thisgradient[0],
+			colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
+		}).css("opacity", 0);;
+
+	});
+
+	window.gyroCount = 0;
+	window.wasFlat = true;
+	gyro.frequency = 200;
+    gyro.startTracking(function(o) { 
+		if(o.beta != null) {
+		
+		window.gyroCount += 1;
+
+		if(o.beta < 40.5) {
+			// flat
+			window.wasFlat = true;
+		} else {
+			// held
+			if(window.wasFlat) {
+				window.wasFlat = false;
+				var thisgradient = _.sample(gradients);
+				$("#background").gradientGenerator({
+					direction: thisgradient[0],
+					colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
+				});
+			}
+
+			if(window.gyroCount % 5 == 0) {
+				$("#interested_in").fadeIn(500);
+				termFade("#interested_in", interested_in[window.interestedN = (window.interestedN + 1) % (interested_in.length - 1)]);
+			}
+		}
+
+		$(".text").fadeTo(100,(((o.beta - 0) / 30) * 1));
+		$("#background").fadeTo(100,1- (((o.beta - 0) / 30) * 1));
+
+    }
+});
+</script>
+</head>
+<body>
+<div class="container">
+	<div class="center-width">
+		<div class="center-height">
+
+			<div class="logo"><img src="http://dantaeyoung.com/logo_dtl.png"></div>
+			<div class="text">
+
+			<p>- operates at the intersection of architecture, technology, community.<br>
+	 - is interested in <span id="interested_in"></span><br><br>
+			</p>
+
+	<a href="http://www.textfiles.com/underconstruction/">REPRESENTATION<br>
+	UNDER<br>
+	CONSTRUCTION. <br></a>
+	<br>
+
+	<a href="http://provolot.tumblr.com/"><b>RAW FEED (Tumblr)</b></a>
+	<br>
+	<br>
+	current projects (as of 2014-12):<br><br>
+
+	<div class="project"><a href="http://www.troupeoperations.com">TROUPE OPERATIONS</a> - Designing/renovating a space for a 7000 sqft altruistic incubator collective in Hell's Kitchen</div>
+	<div class="project"><a href="http://www.arch.columbia.edu/">Columbia University GSAPP</a> - adjunct assistant professor for <i>Architectural Drawing and Representation 2</i>, Spring 2015, and <i>Metatool</i>, Fall 2014 & Spring 2014, a critical/technological course about mobilizing technology to alter/modify/create new design possibilities</div>
+	<div class="project"><a href="http://www.primeproduce.org/">PRIME PRODUCE</a> - co-organizing/co-programming the altruistic incubator collective</div>
+	<div class="project"><a href="http://advp.gsapp.org/">Columbia GSAPP ADVP</a> - mapping/representing political censorship</div>
+	<div class="project"><a href="https://github.com/provolot/">GITHUB</a> - code in progress</div>
+	 <script language=Javascript type=text/javascript>
+	<!--
+	document.write('<a href="mai');
+	document.write('lto');
+	document.write(':&#100;&#97;&#110;');
+	document.write('@');
+	document.write('&#100;&#97;&#110;&#116;&#97;&#101;&#121;&#111;&#117;&#110;&#103;&#46;&#99;&#111;&#109;">');
+	document.write('&#100;&#97;&#110;');
+	document.write('@');
+	document.write('&#100;&#97;&#110;&#116;&#97;&#101;&#121;&#111;&#117;&#110;&#103;&#46;&#99;&#111;&#109;<\/a>');
+	// -->
+	</script><noscript>&#100;&#97;&#110; at 
+	&#100;&#97;&#110;&#116;&#97;&#101;&#121;&#111;&#117;&#110;&#103; dot &#99;&#111;&#109;</noscript>
+			</div>
+		</div>
+	</div>
+	  <!-- Start of StatCounter Code --><script type="text/javascript">
+	<!--//--><![CDATA[// ><!--
+
+	var sc_project=6208969; 
+	var sc_invisible=1; 
+	var sc_security="858887fd"; 
+
+	//--><!]]>
+	</script><script type="text/javascript" src="http://www.statcounter.com/counter/counter.js"></script><p></p><noscript><br /><div></div>
+	class="statcounter"&gt;<a title="drupal statistics module"></a>
+	href="http://www.statcounter.com/drupal/"<br />
+	target="_blank"&gt;<img class="statcounter" />
+	src="http://c.statcounter.com/6208969/0/858887fd/1/"<br />
+	alt="drupal statistics module" &gt;
+	<p></p></noscript>
+	<!-- End of StatCounter Code -->
+</div>
+<div><div id="background"></div></div>
+</body>
+</html>
+
+

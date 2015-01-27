@@ -1,0 +1,69 @@
+html, body {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-family: 'Average Sans', helvetica, arial, sans-serif;
+	font-size: 0.8em;
+	line-height: 1.5em;
+	color: #333;
+	background: -webkit-linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1;
+	background: -moz-linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1;
+	background: -ms-linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1;
+	background: linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1;
+}
+
+.container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+}
+
+#background {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+a { 
+	color: #666;  
+	font-weight: bold;
+	text-decoration: none;
+	border-bottom: 2px dotted #E3D940;
+}
+
+a:hover {
+	color: #BBB;
+}
+
+.center-width { 
+	width: 400px;
+	margin-left: 80px;
+}
+
+.center-height {
+	width: 400px;
+	position: absolute;
+	height: 500px;
+	top: 50%;
+	margin-top: -270px;	
+}
+
+.project {
+	border-left: 2px solid #888;
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+#interested_in {
+	margin-left: 3px;
+	display: none;
+}
+.term {
+	position: absolute;
+	display: inline;
+}
