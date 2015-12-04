@@ -37,109 +37,87 @@
 	]
 
 	function termFade(selector, term) {
+		$(".term").fadeIn();
 		$(".term").fadeOut(200, function() { $(this).remove(); });
 		var thisTerm = $("<div class='term'>" + term + "</div>").hide().appendTo(selector).fadeIn(100);//.fadeOut(3000, function() { $(this).remove(); });
 	}
 
-    var mrefreshinterval = 500; // update display every 500ms
-    var lastmousex=-1; 
-    var lastmousey=-1;
-    var lastmousetime;
-    var mousetravel = 0;
 
-	var mdraw = function() {
-        var md = new Date();
-        var timenow = md.getTime();
-        if (lastmousetime && lastmousetime!=timenow) {
-            var pps = Math.round(mousetravel / (timenow - lastmousetime) * 1000);
-            mousetravel = 0;
-        }
-        lastmousetime = timenow;
-		fadeDesktop();
-        setTimeout(mdraw, mrefreshinterval);
-    }
-
-
-    $('html').mousemove(function(e) {
-        var mousex = e.pageX;
-        var mousey = e.pageY;
-        if (lastmousex > -1) {
-            mousetravel += Math.max( Math.abs(mousex-lastmousex), Math.abs(mousey-lastmousey) );
-        }
-        lastmousex = mousex;
-        lastmousey = mousey;
-    });
- 
-
-	function startCursing() {
-		console.log("yo");
-		window.fading = false;
-		window.currspeed = 0;
-
-		setTimeout(mdraw, mrefreshinterval); 
-
-		$("html").mousemove(function(e) {
-			if(mousetravel < 10) {
-				console.log("too slow"); //window.fadeElem = $(".text").fadeTo(1000, 0, function() { window.fading = false; });
-			} else {
-				try {
-					window.fadeElem.stop();
-					window.fading = false;
-				} catch (e) {
-				}
-				if(window.fading == false)  {
-					window.fading = true;
-					$(".text").fadeTo(100, 1, function() { window.fading = false; });
-				}
-				
-			}
-		});
+	function makeVelocityCalculator(e_init, callback) {
+		var x, y, t = Date.now();
+		return function(e) {
+			var new_x = e.clientX,
+				new_y = e.clientY,
+				new_t = Date.now();
+			var x_dist = new_x - x,
+				y_dist = new_y - y,
+				interval = new_t - t;
+			// update values:
+			x = new_x;
+			y = new_y;
+			t = new_t;
+			var velocity = Math.sqrt(x_dist*x_dist+y_dist*y_dist)/interval;
+			callback(velocity);
+		};
 	}
 
-	function fadeDesktop() {
-		console.log(mousetravel);
-		if(window.fading == false)  {
-			window.fading = true;
-			if(mousetravel < 10) {
-				if($(".text").css("opacity") != 0) {
-					window.fadeElem = $(".text").fadeTo(1000, 0, function() { window.fading = false; });
-				}
+
+	function fadeTextIn() {
+		if(!$(".text").hasClass("fadingIn")) {
+			$(".text").removeClass("fadingOut").stop(true, false).addClass("fadingIn").fadeIn(500, function() { $(this).removeClass("fadingIn"); });
+		}
+	} 
+
+	function fadeTextOut() {
+		if(!$(".text").hasClass("fadingIn")) {
+			if(!$(".text").hasClass("fadingOut")) {
+				$(".text").stop(true, false).addClass("fadingOut").fadeOut(1000, function() { $(this).removeClass("fadingOut"); });
 			}
 		}
+	}
+
+	function incrementInterested() {
+		window.interestedN = (window.interestedN || 0) + 1;
+		window.interestedN %= (interested_in.length - 1);
+		termFade("#interested_in", interested_in[window.interestedN]);
+	}
+
+	function transitionGradients() {
+		var thisgradient = _.sample(gradients);
+		$("#background-under").attr("style", $("#background-over").attr("style")).fadeTo(1000, 1.0);
+		$("#background-over").gradientGenerator({
+			direction: thisgradient[0],
+			colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
+		}).fadeTo(0, 0, function() { $(this).fadeTo(1000,1); })
 	}
 
 
 	$(document).ready(function() {
 
-		window.mouseCount = 0;
-		window.interestedN = 0;
+		var interestedN = 0;
+		var mouseTravel = 0;
 
-		$("body").mousemove(function(e) {
-			window.mouseCount += 1;
+		var fadeFunction = function(v) {
+			window.mouseVelocity = v;
+			if(v > 0.3) {
+				mouseTravel++;
 
-				if(window.mouseCount % 10 == 0) {
-					$("#interested_in").fadeIn(500);
-					termFade("#interested_in", interested_in[window.interestedN = (window.interestedN + 1) % (interested_in.length - 1)]);
-				}
-				if(window.mouseCount % 100 == 0) {
-					var thisgradient = _.sample(gradients);
-					$("#background").gradientGenerator({
-						direction: thisgradient[0],
-						colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
-					});
-				}
-				$("#background").css("opacity", ((Math.cos((window.mouseCount + 50) % 100 / 100 * 2 * Math.PI) + 1) / 3))
+				fadeTextIn();
 
-		});
+				if(mouseTravel % 15 == 0) { incrementInterested(); }
 
+				if(mouseTravel % 50 == 0) { transitionGradients(); }
+				
+			}
+		}
 
-		var thisgradient = _.sample(gradients);
-		$("#background").gradientGenerator({
-			direction: thisgradient[0],
-			colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
-		}).css("opacity", 0);;
+		setInterval(function() { fadeTextOut(); }, 500);
+	  
+		var log = makeVelocityCalculator(null, fadeFunction); 
+		$(document).on("mousemove", log);
 
 
+		/*
 		window.gyroCount = 0;
 		window.wasFlat = true;
 		gyro.frequency = 200;
@@ -182,6 +160,8 @@
 			}
 		});
 
+		*/
+
 	});
 
 </script>
@@ -208,7 +188,7 @@
 			<br>
 			current projects (as of 2015-10):<br><br>
 
-			<div class="project"><a href="http://www.troupeoperations.com">TROUPE OPERATIONS</a> - architecture / construction administration / algorithmic sensor+tech+iotud r  a space for a 8000 sqft altruistic incubator collective in Hell's Kitchen</div> 
+			<div class="project"><a href="http://www.troupeoperations.com">TROUPE OPERATIONS</a> - architecture / construction administration / algorithmic sensor+tech+iot experiments in a space for a 8000 sqft altruistic incubator collective in Hell's Kitchen</div> 
 			<div class="project"><a href="http://www.arch.columbia.edu/">Columbia University GSAPP</a> - adjunct assistant professor for <i>Architectural Drawing and Representation 2</i>, and <i>Metatool</i>, a critical/technological course about mobilizing technology to alter/modify/create new design possibilities</div>
 			<div class="project"><a href="http://www.primeproduce.org/">PRIME PRODUCE</a> - co-organizing/co-programming an intentional co-working guild for social good</div>
 			<!--<div class="project"><a href="http://advp.gsapp.org/">Columbia GSAPP ADVP</a> - mapping/representing political censorship</div> -->
@@ -247,7 +227,10 @@
 			<p></p></noscript>
 			<!-- End of StatCounter Code -->
 		</div>
-		<div><div id="background"></div></div>
+		<div class="backgrounds">
+			<div id="background-over" class="background"></div>
+			<div id="background-under" class="background"></div>
+		</div>
 	</body>
 </html>
 
