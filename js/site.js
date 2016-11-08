@@ -9,7 +9,7 @@ $(document).ready(function() {
         var mdl2 = new mouse.distanceListener(50, events.transitionGradients);
         var mdl2 = new mouse.velocityListener(0.5, events.fadeTextIn);
 
-//        setInterval(function() { events.fadeTextOut(); }, 500);
+        setInterval(function() { events.fadeTextOut(); }, 500);
 
 
     } else {
