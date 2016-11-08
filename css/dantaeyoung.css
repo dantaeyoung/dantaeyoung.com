@@ -37,7 +37,7 @@ body {
 	padding: 0px;
 	height: 100%;
 	width: 100%;
-	//transition: opacity 1s;
+	transition: opacity 1s;
 	
 }
 #background-over { z-index: 20; }
@@ -66,4 +66,11 @@ a:hover {
 .term {
 	position: absolute;
 	display: inline;
+}
+
+.mobile .text {
+    -webkit-transition: opacity 250ms ease-in-out;
+    -moz-transition: opacity 250ms ease-in-out;
+    -o-transition: opacity 250ms ease-in-out;
+    transition: opacity 250ms ease-in-out;
 }

@@ -5,27 +5,34 @@
 <link href='css/dantaeyoung.css' rel='stylesheet' type='text/css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-<script src="js/jquery.cursometer.1.0.0.min.js"></script>
-<script src="js/gradientGenerator.js"></script>
-<script src="js/gyro.js"></script>
-<script>
-	var interested_in = [
-	"critical engineering", "consequentialist + idealistic architecture", "activist real estate", "spatial manifestations of data", 
-	"tacit knowledge",
-	"clear ways of saying things",
-	"how to use heuristics to do complex things in complex environments in a simple way",
-	"post-marxist actors, networks, and their theories", "theories, heuristics, and tacit information", "computer science as philosophy",
-	"the social usage of space as complexity, ecology", 
-	"non-hierarchical modes of collaboration", 
-	"spaces for communion/ownership",
-	"the origins of epistemology, or 'how to know things'",
-	"architecture as applied anthropology",
-	"architecture as hardware, space as software",
-	"good, ethical pedagogy",
-	"people who read the source in websites and will notice that this never gets printed"
-	]
+<script src="libs/jquery.cursometer.1.0.0.min.js"></script>
+<script src="libs/gradientGenerator.js"></script>
+<script src="libs/gyro.js"></script>
 
-	var gradients = [
+<script src="js/mobile.js"></script>
+<script src="js/mouse.js"></script>
+<script src="js/events.js"></script>
+<script src="js/site.js"></script>
+<script>
+vars = {};
+
+vars.interested_in = [
+    "critical engineering", "consequentialist + idealistic architecture", "activist real estate", "spatial manifestations of data", 
+    "tacit knowledge",
+    "clear ways of saying things",
+    "how to use heuristics to do complex things in complex environments in a simple way",
+    "post-marxist actors, networks, and their theories", "theories, heuristics, and tacit information", "computer science as philosophy",
+    "the social usage of space as complexity, ecology", 
+    "non-hierarchical modes of collaboration", 
+    "spaces for communion/ownership",
+    "the origins of epistemology, or 'how to know things'",
+    "architecture as applied anthropology",
+    "architecture as hardware, space as software",
+    "good, ethical pedagogy",
+    "people who read the source in websites and will notice that this never gets printed"
+];
+
+vars.gradients = [
 	["68deg", "#a4d1fb", "#3f3970"],
 	["320deg", "#e37800", "#ebf0bf"],
 	["96deg", "#26ffbc", "#19890c"],
@@ -40,133 +47,8 @@
 	["30deg", "#ff3c71", "#624545"]
 	]
 
-	function termFade(selector, term) {
-		$(".term").fadeIn();
-		$(".term").fadeOut(200, function() { $(this).remove(); });
-		var thisTerm = $("<div class='term'>" + term + "</div>").hide().appendTo(selector).fadeIn(100);//.fadeOut(3000, function() { $(this).remove(); });
-	}
 
 
-	function makeVelocityCalculator(e_init, callback) {
-		var x, y, t = Date.now();
-		return function(e) {
-			var new_x = e.clientX,
-				new_y = e.clientY,
-				new_t = Date.now();
-			var x_dist = new_x - x,
-				y_dist = new_y - y,
-				interval = new_t - t;
-			// update values:
-			x = new_x;
-			y = new_y;
-			t = new_t;
-			var velocity = Math.sqrt(x_dist*x_dist+y_dist*y_dist)/interval;
-			callback(velocity);
-		};
-	}
-
-
-	function fadeTextIn() {
-		if(!$(".text").hasClass("fadingIn")) {
-			$(".text").removeClass("fadingOut").stop(true, false).addClass("fadingIn").fadeIn(500, function() { $(this).removeClass("fadingIn"); });
-		}
-	} 
-
-	function fadeTextOut() {
-		if(!$(".text").hasClass("fadingIn")) {
-			if(!$(".text").hasClass("fadingOut")) {
-				$(".text").stop(true, false).addClass("fadingOut").fadeOut(1000, function() { $(this).removeClass("fadingOut"); });
-			}
-		}
-	}
-
-	function incrementInterested() {
-		window.interestedN = (window.interestedN || 0) + 1;
-		window.interestedN %= (interested_in.length - 1);
-		termFade("#interested_in", interested_in[window.interestedN]);
-	}
-
-	function transitionGradients() {
-		var thisgradient = _.sample(gradients);
-		$("#background-under").attr("style", $("#background-over").attr("style")).fadeTo(1000, 1.0);
-		$("#background-over").gradientGenerator({
-			direction: thisgradient[0],
-			colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
-		}).fadeTo(0, 0, function() { $(this).fadeTo(1000,1); })
-	}
-
-
-	$(document).ready(function() {
-
-		var interestedN = 0;
-		var mouseTravel = 0;
-
-		var fadeFunction = function(v) {
-			window.mouseVelocity = v;
-			if(v > 0.3) {
-				mouseTravel++;
-
-				fadeTextIn();
-
-				if(mouseTravel % 15 == 0) { incrementInterested(); }
-
-				if(mouseTravel % 50 == 0) { transitionGradients(); }
-				
-			}
-		}
-
-//		setInterval(function() { fadeTextOut(); }, 500);
-	  
-		var log = makeVelocityCalculator(null, fadeFunction); 
-		$(document).on("mousemove", log);
-
-
-		/*
-		window.gyroCount = 0;
-		window.wasFlat = true;
-		gyro.frequency = 200;
-
-		gyro.startTracking(function(o) { 
-			if(o.beta == null) {
-
-				if(typeof(window.isDesktop) === 'undefined') {
-					window.isDesktop = true;
-					startCursing();
-				}
-
-			} else {
-
-				window.gyroCount += 1;
-
-				if(o.beta < 40.5) {
-					// flat
-					window.wasFlat = true;
-				} else {
-					// held
-					if(window.wasFlat) {
-						window.wasFlat = false;
-						var thisgradient = _.sample(gradients);
-						$("#background").gradientGenerator({
-							direction: thisgradient[0],
-							colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
-						});
-					}
-
-					if(window.gyroCount % 5 == 0) {
-						$("#interested_in").fadeIn(500);
-						termFade("#interested_in", interested_in[window.interestedN = (window.interestedN + 1) % (interested_in.length - 1)]);
-					}
-				}
-
-				$(".text").fadeTo(100,(((o.beta - 0) / 30) * 1));
-				$("#background").fadeTo(100,1- (((o.beta - 0) / 30) * 1));
-
-			}
-		});
-
-		*/
-
-	});
 
 </script>
 </head>
@@ -237,6 +119,7 @@
 			<div id="background-over" class="background"></div>
 			<div id="background-under" class="background"></div>
 		</div>
+        <div id="debug"></div>
 	</body>
 </html>
 
