@@ -4,12 +4,29 @@ events.interestedN = 0;
 
 events.transitionGradients = function() {
     var thisgradient = _.sample(vars.gradients);
+
+    // make Under the same as Over, make Under opacity 1, OVer opacity 0
+    // set Over as new gradient
+    // transition over to op 1
+    // TODO: FIX THIS
+    $("#background-under").attr("style", $("#background-over").attr("style")).fadeTo(0, 1.0);
+    $("#background-over").fadeTo(0, 0.0);
+    $("#background-over").gradientGenerator({
+        direction: thisgradient[0],
+        colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
+    }).fadeTo(1000, 1.0);
+}
+
+/*events.transitionGradients = function() {
+    var thisgradient = _.sample(vars.gradients);
     $("#background-under").attr("style", $("#background-over").attr("style")).fadeTo(1000, 1.0);
     $("#background-over").gradientGenerator({
         direction: thisgradient[0],
         colors: [{color: thisgradient[1], percent: 0}, {color: thisgradient[2], percent: 100}]
     }).fadeTo(0, 0, function() { $(this).fadeTo(1000,1); })
-}
+}*/
+
+
 
 events.fadeTextIn = function() {
     if(!$(".text").hasClass("fadingIn")) {

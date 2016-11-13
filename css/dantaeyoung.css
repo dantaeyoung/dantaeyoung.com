@@ -7,10 +7,12 @@ body {
 	font-size: 0.8em;
 	line-height: 1.5em;
 	color: #333;
+
 	background: -webkit-linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1;
 	background: -moz-linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1;
 	background: -ms-linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1;
 	background: linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1;
+
 }
 
 .container {

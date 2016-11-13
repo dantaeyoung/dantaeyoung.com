@@ -35,6 +35,8 @@ mobile.angleToOpacity = function(ang1, ang2, range) {
 
 mobile.startGyro = function() {
 
+    this.events = [];
+
     gyro.startTracking(function(o) { 
         if(mobile.checkIfMobile() == false) { return; }
 
@@ -47,11 +49,16 @@ mobile.startGyro = function() {
 
         if(op > 0.5) {
             mobile.gyroCount += 1;
-            if(mobile.gyroCount % 2 == 0) {  events.incrementInterested(); }
-            if(mobile.gyroCount % 4 == 0) {  events.transitionGradients(); }
+            $.each(this.events, function(inc, e) {
+                if(mobile.gyroCount % inc == 0) {  e(); }
+            });
         }
 
     });
 
 }
 
+mobile.startGyro.prototype.addEvent = function(inc, func) {
+    this.events.push([inc, func])
+    console.log("Adding event to fire every " + inc);
+}

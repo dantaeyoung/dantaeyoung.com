@@ -15,7 +15,9 @@ $(document).ready(function() {
     } else {
         $(body).addClass("mobile");
 
-        mobile.startGyro();
+        var m = new mobile.startGyro();
+        m.addEvent(2, events.incrementInterested);
+        m.addEvent(4, events.transitionGradients);
 
     }
 });
