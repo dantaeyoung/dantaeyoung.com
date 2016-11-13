@@ -13,7 +13,7 @@ $(document).ready(function() {
         var mdl2 = new mouse.distanceListener(50, events.transitionGradients);
         var mdl2 = new mouse.velocityListener(0.5, events.fadeTextIn);
 
-//        window.fadeOutInterval = setInterval(function() { events.fadeTextOut(); }, 500);
+        window.fadeOutInterval = setInterval(function() { events.fadeTextOut(); }, 500);
 
 
     } else {
