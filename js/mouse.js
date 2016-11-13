@@ -43,3 +43,6 @@ mouse.velocityListener = function(velocity, callback) {
     }
     $(document).on("mousemove", mouse.makeVelocityCalculator(fadeFunction));
 }
+
+mouse.init = function() {
+}

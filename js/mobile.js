@@ -12,6 +12,7 @@ mobile.checkIfMobile = function() {
         } 
     } else { 
         mobile.isMobile = true;
+        $("body").addClass("mobile");
     }
 
     return mobile.isMobile;
@@ -35,30 +36,55 @@ mobile.angleToOpacity = function(ang1, ang2, range) {
 
 mobile.startGyro = function() {
 
+    var instance = this;
     this.events = [];
 
     gyro.startTracking(function(o) { 
         if(mobile.checkIfMobile() == false) { return; }
 
-
-
         var op = mobile.angleToOpacity(90, o.beta, 90);
 
         $(".text").css({'opacity': op});
-
+        $(".backgrounds").css({'opacity': op});
 
         if(op > 0.5) {
             mobile.gyroCount += 1;
-            $.each(this.events, function(inc, e) {
-                if(mobile.gyroCount % inc == 0) {  e(); }
-            });
+            instance.checkAndRunEvents(mobile.gyroCount);
         }
 
     });
+}
 
+mobile.startGyro.prototype.enableDebug = function() {
+    var instance = this;
+    window.clearInterval(window.fadeOutInterval);
+    $(".text").show(); //css({'opacity': mobile.gyroCount % 3 / 3});
+    setInterval(function(){ 
+        mobile.gyroCount += 1; 
+        instance.checkAndRunEvents(mobile.gyroCount);
+    }, 1000);
 }
 
 mobile.startGyro.prototype.addEvent = function(inc, func) {
+
+    func();
+
     this.events.push([inc, func])
     console.log("Adding event to fire every " + inc);
+}
+
+mobile.startGyro.prototype.getEvents = function() {
+    console.log(this.events);
+}
+
+mobile.startGyro.prototype.checkAndRunEvents = function(gc) {
+    _.forEach(this.events, function(e) {
+        if(gc % e[0] == 0) {  
+            console.log("running event!");
+            e[1]();
+        }
+    });
+}
+
+mobile.init = function() {
 }
