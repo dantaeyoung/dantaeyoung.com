@@ -80,3 +80,8 @@ a:hover {
     -o-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;
 }
+
+.bio {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}

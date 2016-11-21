@@ -69,7 +69,7 @@ mobile.startGyro.prototype.addEvent = function(inc, func) {
 
     func();
 
-    this.events.push([inc, func])
+    this.events.push({'interval': inc, 'function': func, 'lastfire': Date.now()})
     console.log("Adding event to fire every " + inc);
 }
 
@@ -79,9 +79,9 @@ mobile.startGyro.prototype.getEvents = function() {
 
 mobile.startGyro.prototype.checkAndRunEvents = function(gc) {
     _.forEach(this.events, function(e) {
-        if(gc % e[0] == 0) {  
+        if(gc % e['interval'] == 0) {  
             console.log("running event!");
-            e[1]();
+            e['function']();
         }
     });
 }

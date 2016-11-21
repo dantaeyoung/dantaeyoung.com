@@ -1,6 +1,6 @@
-mouse = {};
+desktop = {};
 
-mouse.makeVelocityCalculator = function(callback) {
+desktop.makeVelocityCalculator = function(callback) {
     var x, y, t = Date.now();
     return function(e) {
         var new_x = e.clientX,
@@ -19,7 +19,7 @@ mouse.makeVelocityCalculator = function(callback) {
 }
 
 
-mouse.distanceListener = function(distance, callback) {
+desktop.distanceListener = function(distance, callback) {
     var mouseTravel = 0;
 
     var fadeFunction = function(vel) {
@@ -32,17 +32,17 @@ mouse.distanceListener = function(distance, callback) {
         }
     }
 
-    $(document).on("mousemove", mouse.makeVelocityCalculator(fadeFunction));
+    $(document).on("mousemove", desktop.makeVelocityCalculator(fadeFunction));
 }
 
-mouse.velocityListener = function(velocity, callback) {
+desktop.velocityListener = function(velocity, callback) {
     var fadeFunction = function(vel) {
         if(vel > velocity) {
             callback(vel);
         }
     }
-    $(document).on("mousemove", mouse.makeVelocityCalculator(fadeFunction));
+    $(document).on("mousemove", desktop.makeVelocityCalculator(fadeFunction));
 }
 
-mouse.init = function() {
+desktop.init = function() {
 }

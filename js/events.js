@@ -3,6 +3,7 @@ events = {};
 events.interestedN = 0;
 
 events.transitionGradients = function() {
+    console.log("transitionGradeitns");
     var thisgradient = _.sample(vars.gradients);
 
     // make Under the same as Over, make Under opacity 1, OVer opacity 0
@@ -46,6 +47,7 @@ events.termFade = function(selector, term) {
 
 
 events.incrementInterested = function() {
+    console.log("incrementInterested");
     events.interestedN = (events.interestedN || 0) + 1;
     events.interestedN %= (vars.interested_in.length - 1);
     events.termFade("#interested_in", vars.interested_in[events.interestedN]);
