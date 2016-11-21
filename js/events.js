@@ -33,7 +33,7 @@ events.fadeTextIn = function() {
 events.fadeTextOut = function() {
     if(!$(".text").hasClass("fadingIn")) {
         if(!$(".text").hasClass("fadingOut")) {
-            $(".text").stop(true, false).addClass("fadingOut").fadeOut(500, function() { $(this).removeClass("fadingOut"); });
+            $(".text").stop(true, false).addClass("fadingOut").fadeOut(1000, function() { $(this).removeClass("fadingOut"); });
         }
     }
 }
