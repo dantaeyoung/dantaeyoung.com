@@ -23,7 +23,7 @@ body {
 }
 
 .content {
-	width: 600px;
+	width: 500px;
 	padding: 40px;
 }
 
@@ -89,6 +89,6 @@ a:hover {
 }
 
 .text {
-    font-size: 1.3em;
+    font-size: 1.25em;
     line-height: 1.5em;
 }
