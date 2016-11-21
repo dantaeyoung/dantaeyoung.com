@@ -9,11 +9,11 @@ $(document).ready(function() {
 
     if(mobile.checkIfMobile() == false) {
 
-        var mdl1 = new desktop.distanceListener(15, events.incrementInterested);
-        var mdl2 = new desktop.distanceListener(50, events.transitionGradients);
-        var mdl3 = new desktop.velocityListener(0.5, events.fadeTextIn);
+        site.dl1 = new desktop.distanceListener(30, events.incrementInterested);
+        site.dl2 = new desktop.distanceListener(50, events.transitionGradients);
+        site.dl3 = new desktop.velocityListener(0.5, events.fadeTextIn);
 
-//        window.fadeOutInterval = setInterval(function() { events.fadeTextOut(); }, 500);
+        window.fadeOutInterval = setInterval(function() { events.fadeTextOut(); }, 1000);
 
 
     } else {

@@ -28,7 +28,7 @@ desktop.distanceListener = function(distance, callback) {
             instance.mouseTravel += vel;
         }
         if(instance.mouseTravel > distance) {
-            instance.mouseTravel %= distance;
+            instance.mouseTravel = 0;
             callback();
         }
     }

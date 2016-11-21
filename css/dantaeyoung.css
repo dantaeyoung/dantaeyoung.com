@@ -23,9 +23,15 @@ body {
 }
 
 .content {
-	width: 400px;
-	padding: 50px;
+	width: 600px;
+	padding: 40px;
 }
+
+.mobile .content {
+	width: 400px;
+    padding: 20px;
+}
+
 
 
 .backgrounds {
@@ -33,6 +39,7 @@ body {
     -moz-transition: opacity 1s ease-in-out;
     -o-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;
+    opacity: 0.75;
 }
 
 .background {
@@ -81,7 +88,7 @@ a:hover {
     transition: opacity 1s ease-in-out;
 }
 
-.bio {
-    font-size: 1.2em;
+.text {
+    font-size: 1.3em;
     line-height: 1.5em;
 }

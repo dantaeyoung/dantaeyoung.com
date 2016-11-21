@@ -50,11 +50,10 @@ events.incrementInterested = function() {
     console.log("incrementInterested");
     events.interestedN = (events.interestedN || 0) + 1;
     events.interestedN %= (vars.interested_in.length - 1);
-    events.termFade("#interested_in", vars.interested_in[events.interestedN]);
+    events.termFade("#interested_in", vars.interested_in[events.interestedN] + vars.interested_in_post);
 }
 
 
 events.init = function() {
-    events.interestedN = 0;
-    events.termFade("#interested_in", vars.interested_in[events.interestedN]);
+    events.incrementInterested();
 }
