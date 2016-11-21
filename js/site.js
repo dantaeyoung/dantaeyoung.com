@@ -11,7 +11,7 @@ $(document).ready(function() {
 
         var mdl1 = new desktop.distanceListener(15, events.incrementInterested);
         var mdl2 = new desktop.distanceListener(50, events.transitionGradients);
-        var mdl2 = new desktop.velocityListener(0.5, events.fadeTextIn);
+        var mdl3 = new desktop.velocityListener(0.5, events.fadeTextIn);
 
 //        window.fadeOutInterval = setInterval(function() { events.fadeTextOut(); }, 500);
 

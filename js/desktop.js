@@ -20,14 +20,15 @@ desktop.makeVelocityCalculator = function(callback) {
 
 
 desktop.distanceListener = function(distance, callback) {
-    var mouseTravel = 0;
+    var instance = this;
+    instance.mouseTravel = 0;
 
     var fadeFunction = function(vel) {
         if(vel > 0.1) {
-            mouseTravel += vel;
+            instance.mouseTravel += vel;
         }
-        if(mouseTravel > distance) {
-            mouseTravel %= distance;
+        if(instance.mouseTravel > distance) {
+            instance.mouseTravel %= distance;
             callback();
         }
     }
