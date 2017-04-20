@@ -39,8 +39,8 @@ mobile.startGyro = function() {
     var instance = this;
     this.events = [];
 
+    if(mobile.checkIfMobile() == false) { return; }
     gyro.startTracking(function(o) { 
-        if(mobile.checkIfMobile() == false) { return; }
 
         var op = mobile.angleToOpacity(90, o.beta, 90);
 
@@ -87,4 +87,7 @@ mobile.startGyro.prototype.checkAndRunEvents = function(gc) {
 }
 
 mobile.init = function() {
+  window.m = new mobile.startGyro();
+  m.addEvent(2, events.incrementInterested);
+  m.addEvent(4, events.transitionGradients);
 }
