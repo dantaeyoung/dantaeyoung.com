@@ -18,7 +18,6 @@ events.transitionGradients = function() {
 //    console.log("transitionGradeitns");
     var thisgradient = events.randPastelPair();
     console.log(thisgradient);
-//    var thisgradient = _.sample(vars.gradients);
 
     // make Under the same as Over, make Under opacity 1, OVer opacity 0
     // set Over as new gradient
