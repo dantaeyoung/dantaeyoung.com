@@ -1,8 +1,8 @@
-events = {};
+Events = {};
 
-events.interestedN = 0;
+Events.interestedN = 0;
 
-events.randPastelPair = function() {
+Events.randPastelPair = function() {
     var difference = 0.4;  // 0 ~ 1; 0 = same, 1 = different colors
     var spread = 0.3; // 0 ~ 1: 0 = always same/different, 1 = total randomness
 
@@ -14,10 +14,9 @@ events.randPastelPair = function() {
     return [pastel1, pastel2];
 }
 
-events.transitionGradients = function() {
+Events.transitionGradients = function() {
 //    console.log("transitionGradeitns");
-    var thisgradient = events.randPastelPair();
-    console.log(thisgradient);
+    var thisgradient = Events.randPastelPair();
 
     // make Under the same as Over, make Under opacity 1, OVer opacity 0
     // set Over as new gradient
@@ -36,13 +35,13 @@ events.transitionGradients = function() {
 }
 
 
-events.fadeTextIn = function() {
+Events.fadeTextIn = function() {
     if(!$(".text").hasClass("fadingIn")) {
         $(".text").removeClass("fadingOut").stop(true, false).addClass("fadingIn").fadeIn(500, function() { $(this).removeClass("fadingIn"); });
     }
 } 
 
-events.fadeTextOut = function() {
+Events.fadeTextOut = function() {
     if(!$(".text").hasClass("fadingIn")) {
         if(!$(".text").hasClass("fadingOut")) {
             $(".text").stop(true, false).addClass("fadingOut").fadeOut(1000, function() { $(this).removeClass("fadingOut"); });
@@ -51,21 +50,21 @@ events.fadeTextOut = function() {
 }
 
 
-events.termFade = function(selector, term) {
+Events.termFade = function(selector, term) {
     $(".term").fadeIn();
     $(".term").fadeOut(200, function() { $(this).remove(); });
     var thisTerm = $("<div class='term'>" + term + "</div>").hide().appendTo(selector).fadeIn(100);//.fadeOut(3000, function() { $(this).remove(); });
 }
 
 
-events.incrementInterested = function() {
+Events.incrementInterested = function() {
 //    console.log("incrementInterested");
-    events.interestedN = (events.interestedN || 0) + 1;
-    events.interestedN %= (vars.interested_in.length - 1);
-    events.termFade("#interested_in", vars.interested_in[events.interestedN] + vars.interested_in_post);
+    Events.interestedN = (Events.interestedN || 0) + 1;
+    Events.interestedN %= (Vars.interested_in.length - 1);
+    Events.termFade("#interested_in", Vars.interested_in[Events.interestedN] + Vars.interested_in_post);
 }
 
 
-events.init = function() {
-    events.incrementInterested();
+Events.init = function() {
+    Events.incrementInterested();
 }

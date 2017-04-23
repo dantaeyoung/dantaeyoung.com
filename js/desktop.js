@@ -1,6 +1,6 @@
-desktop = {};
+Desktop = {};
 
-desktop.makeVelocityCalculator = function(callback) {
+Desktop.makeVelocityCalculator = function(callback) {
     var x, y, t = Date.now();
     return function(e) {
         var new_x = e.clientX,
@@ -19,7 +19,7 @@ desktop.makeVelocityCalculator = function(callback) {
 }
 
 
-desktop.distanceListener = function(distance, callback) {
+Desktop.distanceListener = function(distance, callback) {
     var instance = this;
     instance.mouseTravel = 0;
 
@@ -33,21 +33,21 @@ desktop.distanceListener = function(distance, callback) {
         }
     }
 
-    $(document).on("mousemove", desktop.makeVelocityCalculator(fadeFunction));
+    $(document).on("mousemove", Desktop.makeVelocityCalculator(fadeFunction));
 }
 
-desktop.velocityListener = function(velocity, callback) {
+Desktop.velocityListener = function(velocity, callback) {
     var fadeFunction = function(vel) {
         if(vel > velocity) {
             callback(vel);
         }
     }
-    $(document).on("mousemove", desktop.makeVelocityCalculator(fadeFunction));
+    $(document).on("mousemove", Desktop.makeVelocityCalculator(fadeFunction));
 }
 
-desktop.init = function() {
-  site.dl1 = new desktop.distanceListener(30, events.incrementInterested);
-  site.dl2 = new desktop.distanceListener(50, events.transitionGradients);
-//        site.dl3 = new desktop.velocityListener(0.1, events.fadeTextIn);
-//        window.fadeOutInterval = setInterval(function() { events.fadeTextOut(); }, 1000);
+Desktop.init = function() {
+  Site.dl1 = new Desktop.distanceListener(30, Events.incrementInterested);
+  Site.dl2 = new Desktop.distanceListener(50, Events.transitionGradients);
+//        site.dl3 = new Desktop.velocityListener(0.1, Events.fadeTextIn);
+//        window.fadeOutInterval = setInterval(function() { Events.fadeTextOut(); }, 1000);
 }

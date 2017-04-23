@@ -1,16 +1,16 @@
-site = {};
+Site = {};
 
 
 $(document).ready(function() {
 
-    mobile.init();
-    events.init();
+    Mobile.init();
+    Events.init();
 
-    if(mobile.checkIfMobile() == false) {
-      desktop.init();
+    if(Mobile.checkIfMobile() == false) {
+      Desktop.init();
     } else {
       $(body).addClass("mobile");
-      mobile.init();
+      Mobile.init();
     }
 });
 
