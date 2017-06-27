@@ -1,0 +1,23 @@
+{
+  "name": "dantaeyoung.com",
+  "homepage": "https://github.com/dantaeyoung/dantaeyoung.com",
+  "authors": [
+    "Dan Taeyoung <provolot@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "averagesans": "https://google-fonts.azurewebsites.net/googleFonts/averagesans?family=Average+Sans",
+    "opensans": "https://google-fonts.azurewebsites.net/googleFonts/opensans?family=Open+Sans:400,700"
+  }
+}
