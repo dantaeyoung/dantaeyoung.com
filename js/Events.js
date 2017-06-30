@@ -61,7 +61,7 @@ Events.incrementInterested = function() {
 //    console.log("incrementInterested");
     Events.interestedN = (Events.interestedN || 0) + 1;
     Events.interestedN %= (Vars.interested_in.length - 1);
-    Events.termFade("#interested_in", Vars.interested_in[Events.interestedN] + Vars.interested_in_post);
+    Events.termFade("#interested_in", Vars.interested_in[Events.interestedN] + ".");
 }
 
 
