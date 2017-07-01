@@ -29,26 +29,34 @@ Projects.bindAnyPage = function(elem) {
 
 Projects.init = function() {
 
-  $(".proj").each(function(i, e) {
-    console.log(e.href);
-		$.ajax({
-      type: 'HEAD',
-      url: e.href,
-      success: function() {
-        console.log("page exists!");
-        Projects.bindExistsPage(e);
-      },
-      error: function() {
-        console.log("page nono exists!");
-        Projects.bindNoPage(e);
-      }
-		});
-    Projects.bindAnyPage(e);
-  });
 
-  $(document).mousemove(function(e) {
-    var pos = { 'top': e.offsetY, 'left': e.offsetX };
-    $("#splashimages").offset(pos);
-  });
+  //$(".proj").each(function(i, e) {
+    //console.log(e.href);
+		//$.ajax({
+      //type: 'HEAD',
+      //url: e.href,
+      //success: function() {
+        //console.log("page exists!");
+        //Projects.bindExistsPage(e);
+      //},
+      //error: function() {
+        //console.log("page nono exists!");
+        //Projects.bindNoPage(e);
+      //}
+		//});
+    //Projects.bindAnyPage(e);
+  //});
+
+  //$(document).mousemove(function(e) {
+    //var pos = { 'top': e.offsetY, 'left': e.offsetX };
+    //$("#splashimages").offset(pos);
+  //});
    
+  Projects.projectList = new Vue({
+    el: '#projectlist',
+    data: {
+      projects: Vars.projects_to_show
+    }
+  })
 }
+
