@@ -1,3 +1,5 @@
+gyro = require('../libs/gyro.js');
+
 Mobile = {};
 
 Mobile.gyroCount = 0;
@@ -91,3 +93,5 @@ Mobile.init = function() {
   m.addEvent(2, Events.incrementInterested);
   m.addEvent(4, Events.transitionGradients);
 }
+
+module.exports = Mobile;

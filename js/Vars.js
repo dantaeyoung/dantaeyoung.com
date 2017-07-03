@@ -35,3 +35,4 @@ Vars.projects_to_show = {
   }
 };
 
+module.exports = Vars;

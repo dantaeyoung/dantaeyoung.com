@@ -1,3 +1,15 @@
+$ = global.jQuery = require('jquery');
+_ = require('lodash');
+Vue = require('vue');
+
+gradientGenerator = require('../libs/gradientGenerator.js');
+
+Mobile = require('./Mobile.js');
+Desktop = require('./Desktop.js');
+Events = require('./Events.js');
+Vars = require('./Vars.js');
+
+
 var Main = {};
 
 $(document).ready(function() {

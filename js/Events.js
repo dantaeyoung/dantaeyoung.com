@@ -68,3 +68,5 @@ Events.incrementInterested = function() {
 Events.init = function() {
     Events.incrementInterested();
 }
+
+module.exports = Events;

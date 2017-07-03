@@ -1,0 +1,24 @@
+{
+  "name": "dantaeyoung.com",
+  "version": "1.0.0",
+  "description": "A website that wants to be viewed in motion.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "watchify js/Main.js --debug -v -o js/bundle.js & wait"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dantaeyoung/dantaeyoung.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dantaeyoung/dantaeyoung.com/issues"
+  },
+  "homepage": "https://github.com/dantaeyoung/dantaeyoung.com#readme",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "vue": "^2.2.6"
+  }
+}

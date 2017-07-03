@@ -46,8 +46,10 @@ Desktop.velocityListener = function(velocity, callback) {
 }
 
 Desktop.init = function() {
-  Main.dl1 = new Desktop.distanceListener(30, Events.incrementInterested);
-  Main.dl2 = new Desktop.distanceListener(50, Events.transitionGradients);
+  Desktop.dl1 = new Desktop.distanceListener(30, Events.incrementInterested);
+  Desktop.dl2 = new Desktop.distanceListener(50, Events.transitionGradients);
 //        site.dl3 = new Desktop.velocityListener(0.1, Events.fadeTextIn);
 //        window.fadeOutInterval = setInterval(function() { Events.fadeTextOut(); }, 1000);
 }
+
+module.exports = Desktop;
