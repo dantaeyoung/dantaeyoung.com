@@ -2,6 +2,8 @@ Flavor = {};
 
 Flavor.init = function() {
 
+  console.log(Vars);
+
   Flavor.projectList = new Vue({
     el: '#projectlist',
     data: {

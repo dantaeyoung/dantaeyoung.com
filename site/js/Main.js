@@ -1,18 +1,19 @@
 $ = global.jQuery = require('jquery');
 _ = require('lodash');
-Vue = require('vue');
+global.Vue = require('../../node_modules/vue/dist/vue.min.js');
 
 gradientGenerator = require('../libs/gradientGenerator.js');
 
-Mobile = require('./Mobile.js');
-Desktop = require('./Desktop.js');
-Events = require('./Events.js');
-Vars = require('./Vars.js');
+global.Mobile = require('./Mobile.js');
+global.Desktop = require('./Desktop.js');
+global.Events = require('./Events.js');
+global.Vars = require('./Vars.js');
+//global.Flavor = require('./Flavor_shadeProjects.js');
 
 
-var Main = {};
+global.Main = {};
 
-$(document).ready(function() {
+Main.init = function() { 
 
   Mobile.init();
   Events.init();
@@ -28,5 +29,5 @@ $(document).ready(function() {
     Flavor.init();
   }
 
-});
+};
 
