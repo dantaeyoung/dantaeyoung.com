@@ -1,0 +1,77 @@
+<html>
+<head>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<link href='bower_components/opensans/openSans.css' rel='stylesheet' type='text/css'>
+<link href='bower_components/averagesans/averageSans.css' rel='stylesheet' type='text/css'>
+<link href='css/reset.css' rel='stylesheet' type='text/css'>
+<link href='css/dantaeyoung.css' rel='stylesheet' type='text/css'>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/lodash/dist/lodash.min.js"></script>
+<script src="bower_components/vue/dist/vue.min.js"></script>
+<script src="libs/jquery.cursometer.1.0.0.min.js"></script>
+<script src="libs/gradientGenerator.js"></script>
+<script src="libs/gyro.js"></script>
+
+<script src="js/Sections.js"></script>
+<script src="js/Mobile.js"></script>
+<script src="js/Desktop.js"></script>
+<script src="js/Events.js"></script>
+<script src="js/Site.js"></script>
+<script src="js/Projects.js"></script>
+<script>
+Vars = {};
+
+Vars.interested_in = [
+  "critical engineering", 
+  "ethical architecture", 
+  "activist real estate", 
+  "tacit knowledge vs. explicit knowledge",
+  "clear ways of saying things (ala Richard Feynman)",
+  "how to use heuristics to do complex things in complex environments in a simple way",
+  "erratic Marxism",
+  "actor-network theory",
+  "cybernetics",
+  "lived experience over logical debate",
+  "computer science as philosophy",
+  "radical architecture happening through applied anthroplogy and activist real estate",
+  "non-hierarchical modes of collaboration", 
+  "spaces for communion/ownership",
+  "using technology and space to create social software",
+  "architecture as applied anthropology",
+  "ethical, effective pedagogy",
+  "computational social science",
+  "the kinds of people who read the source of websites"
+];
+
+Vars.projects_to_show = {
+  "landscapes_of_profit": {
+    "title": "Landscapes Of Profit",
+    "description": "Landscapes of Profit is a visualization of a proposed “flip tax” of 1% on properties bought and sold within two years. The authors show that the tax would have generated $33.7 million last year to fund the City’s affordable space agenda: enough to build 150 new units of affordable housing or to secure 125 permanently affordable workspaces for nonprofits and small businesses."
+  },
+  "party_fortress": {
+    "title": "Party Fortress",
+    "description": "PF PFP FP blah blah blah"
+  }
+};
+
+</script>
+</head>
+<body>
+<div class="container">
+	<div class="content">
+
+		<div class="logo"><img src="img/logo_dtl.png"></div>
+        <div class="text">
+
+ <h3>Projects:</h3>
+<div id="projectlist">
+  <div v-for="(item, key) in projects">
+    <a :href="'/projects/' + key + '/'">{{ item.title }}</a>
+    <div>{{ item.description }}</div>
+  </div>
+</div>
+
+	</body>
+</html>
+
+

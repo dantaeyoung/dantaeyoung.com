@@ -1,5 +1,4 @@
-Site = {};
-
+var Main = {};
 
 $(document).ready(function() {
 
@@ -13,8 +12,9 @@ $(document).ready(function() {
     Mobile.init();
   }
 
-
-  Projects.init();
+  if((typeof(Flavor)) !== "undefined") {
+    Flavor.init();
+  }
 
 });
 
