@@ -15,10 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
     "averagesans": "https://google-fonts.azurewebsites.net/googleFonts/averagesans?family=Average+Sans",
-    "opensans": "https://google-fonts.azurewebsites.net/googleFonts/opensans?family=Open+Sans:400,700",
-    "vue": "^2.3.4"
+    "opensans": "https://google-fonts.azurewebsites.net/googleFonts/opensans?family=Open+Sans:400,700"
   }
 }
