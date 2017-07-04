@@ -41,8 +41,8 @@ $(document).ready(function() {
       <input type="radio" id="explanation" value="explanation" v-model="picked" >
       <label for="explanation">I like explanations.</label>
       <br>
-      <input type="radio" id="analogy" value="analogy" v-model="picked" >
-      <label for="analogy">I like analogies and metaphors.</label>
+      <input type="radio" id="twobytwo" value="twobytwo" v-model="picked" >
+      <label for="twobytwo">I like two by two diagrams.</label>
       <br>
     </div>
 
@@ -53,6 +53,7 @@ $(document).ready(function() {
 </div>
 
 <div id="biglist-wrapper">
+  <div id="twobytwo-wrapper"></div>
   <div id="biglist">
     <div v-for="(item, key) in projects" :style="itemStyle(item)" class="projectitem">
 

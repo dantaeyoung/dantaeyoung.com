@@ -129,3 +129,17 @@ body.analogyView {
     }
   }
 }
+
+body.twobytwoView {
+  #biglist-wrapper {
+    top: 50vh;
+    left: 50vw;
+    margin-top: -40vmin;
+    margin-left: -40vmin;
+    position: absolute;
+    width: 80vmin;
+    height: 80vmin;
+    background: url('two_by_two_field.svg') no-repeat;
+    border: 10px solid green;
+  }
+}
