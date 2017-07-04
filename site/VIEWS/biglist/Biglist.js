@@ -3,14 +3,27 @@ Biglist = {};
 
 Biglist.init = function() {
 
-  console.log(Vars);
 
   Biglist.projectList = new Vue({
     el: '#biglist',
     data: {
       projects: Vars.allProjects
     },
+    computed: {
+      randomizedProjects: function () {
+        var assignOrdinal = function(x) { return  _.assign(x, { "ordinal": _.random(1, 1000) }); };
+        console.log(_.map(this.projects, assignOrdinal));
+        return _.map(this.projects, assignOrdinal);
+      }
+    },
     methods: {
+      loading: function(item) {
+        console.log(item);
+        return false;
+      },
+      folderName: function(item) {
+        return item.split("/")[0];
+      },
       shade: function(item) {
         console.log(item.seriousness);
         return item.seriousness;
@@ -35,6 +48,27 @@ Biglist.init = function() {
         return s;
       }
     }
-  })
+  });
+
+
+  Biglist.menuList = new Vue({
+    el: '#menulist',
+    data: {
+      picked: null 
+    },
+    watch: {
+      picked: function(val, oldval) {
+        if(oldval) { $("body").removeClass(oldval + "View"); }
+        $("body").addClass(val + "View");
+         console.log(val);
+      }
+    },
+    methods: {
+      casualView: function() {
+      }
+    }
+  });
+
+
 }
 

@@ -9,11 +9,13 @@
 
 <script src="../../SHARED/js/bundle.js"></script>
 <script src="../../../node_modules/vue/dist/vue.min.js"></script>
+<script src="XYslider.js"></script>
 <script src="Biglist.js"></script>
 <script>
 $(document).ready(function() {
   Main.init();
   Biglist.init();
+  XYslider.create("slider");
 });
 </script>
 
@@ -24,14 +26,45 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="container">
+<div id="menu-wrapper">
+  <div id="menu">
+    <div id="menulist">
+      <input type="radio" id="casual" value="casual" v-model="picked" v-on:change="casualView">
+      <label for="casual">I like quick words.</label>
+      <br>
+      <input type="radio" id="images" value="images" v-model="picked">
+      <label for="images">I like images.</label>
+      <br>
+      <input type="radio" id="data" value="data" v-model="picked">
+      <label for="data">I like data.</label>
+      <br>
+      <input type="radio" id="explanation" value="explanation" v-model="picked" >
+      <label for="explanation">I like explanations.</label>
+      <br>
+      <input type="radio" id="analogy" value="analogy" v-model="picked" >
+      <label for="analogy">I like analogies and metaphors.</label>
+      <br>
+    </div>
+
+
+
+    <div id="slider"></div>
+  </div>
+</div>
 
 <div id="biglist-wrapper">
   <div id="biglist">
     <div v-for="(item, key) in projects" :style="itemStyle(item)" class="projectitem">
-      <a class="title" :href="item.url">{{ item.title }}</a>
-      <div>{{ item.description }}</div>
-      <div>{{ item }}</div>
-      <img :src="'site/DATA/projects/'+ key + '/' + item.logo"/>
+
+      <!--<div class="previewImage" v-if="item.previewImage"><img :src="'../../DATA/projects/'+ folderName(key) + '/' + item.previewImage" /></div>-->
+      <div class="title"><a :href="item.url">{{ item.title }}</a></div>
+      <div class="description">{{ item.description }}</div>
+      <div class="casualdescription">{{ item.casualdescription }}</div>
+      <div class="keywords">
+        <span v-for="kw in item.keywords">{{ kw }}</span>
+      </div>
+      <div class="analogy">{{ item.analogy }}</div>
+      <div class="fulldata">{{ item }}</div>
     </div>
   </div>
 </div>

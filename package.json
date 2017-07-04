@@ -18,6 +18,7 @@
   "homepage": "https://github.com/dantaeyoung/dantaeyoung.com#readme",
   "dependencies": {
     "jquery": "^3.2.1",
+    "jquery.transit": "^0.9.12",
     "lodash": "^4.17.4",
     "vue": "^2.2.6"
   },

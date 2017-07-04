@@ -1,21 +1,131 @@
+$media-phone: "only screen and (max-width: 500px)";
+
+
+@media #{$media-phone} {
+  .container {
+    flex-direction: column;
+  }
+}
+
+#menu-wrapper {
+  width: 200px;
+}
+@media #{$media-phone} {
+  #menu-wrapper {
+    width: auto;
+  }
+}
+
+#menu {
+  padding: 30px;
+}
 
 #biglist-wrapper {
-  padding: 50px;
+  padding: 30px;
+  flex: 1;
+}
+
+#biglist {
+  display: flex;
+ flex-wrap: wrap;
+
 }
 
 .projectitem {
-  background-color: white;
+
   padding: 10px;
   opacity: 0.8;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin: 5px 5px 5px 5px;
+
+  .previewImage {
+    max-width: 300px;
+    max-height: 300px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 
   .title  {
     font-size: 1.2em;
     font-weight: bold;
-    margin-bottom: 5px;
     display: inline-block;
+  
   }
 
 }
 
+.keywords {
+  color: lighten(black, 80%);
+  span {
+    margin-right: 5px;
+  }
+}
+
+.backgrounds {
+  opacity: 0.5;
+}
+
+
+.projectitem, .projectitem  * { 
+  transition: all 700ms cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+
+$maxheightvar: 300px;
+
+body {
+  .projectitem > * {
+    opacity: 0;
+    max-height: 0 !important;
+  }
+}
+
+body.casualView {
+  .projectitem {
+    padding: 0px;
+    margin: 0px 5px;
+    .casualdescription {
+      opacity: 1;
+			max-height: $maxheightvar !important;
+    }
+  }
+}
+
+body.imagesView {
+  .projectitem {
+    .previewImage, .title {
+      opacity: 1;
+			max-height: $maxheightvar !important;
+    }
+  }
+}
+
+body.dataView {
+  .projectitem {
+    .fulldata {
+      opacity: 1;
+			max-height: $maxheightvar !important;
+    }
+  }
+}
+
+body.explanationView {
+  .projectitem {
+    .title, .description {
+      opacity: 1;
+			max-height: $maxheightvar !important;
+    }
+  }
+}
+
+body.analogyView {
+  .projectitem {
+    .title, .analogy {
+      opacity: 1;
+			max-height: $maxheightvar !important;
+    }
+  }
+}

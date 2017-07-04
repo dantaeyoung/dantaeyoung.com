@@ -4,15 +4,19 @@
     where we practice the craft of intentionally serving others through our work.
     We are a 501(c)3 non-profit and a membership cooperative. 
     We are an intentional community for work.""",
+  "casualdescription": "Designing, constructing, planning, facilitating, and practing a cooperative, intentional community for work.",
+  "analogy": "A second graduate school.",
   "role": """co-organizing/co-programming a cooperative-driven intentional co-working guild for social good. Support structure for growing non-profits & social entrepreneurs, testing ground for 'social algorithms'. (Architectural design, budgeting, coordinating construction, programming, organizing, the whole shebang.)""",
   "url": "http://www.primeproduce.org/",
-  "logo": "primeproducelogo.png",
+  "previewImage": "primeproducelogo.png",
   "more": "index.html",
   "twobytwo": {
     "scores": {
       "playfulness": 0.5,
       "infrastructureness": 1.0
     }
-  }
+  },
+  "keywords": ["architecture", "infrastructure", "construction", "real estate", "cooperatives", "space", "community"]
+
 
 }
