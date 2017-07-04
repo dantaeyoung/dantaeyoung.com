@@ -1,0 +1,18 @@
+{
+  "title": "Prime Produce",
+  "description": """Prime Produce is a guild for social good, 
+    where we practice the craft of intentionally serving others through our work.
+    We are a 501(c)3 non-profit and a membership cooperative. 
+    We are an intentional community for work.""",
+  "role": """co-organizing/co-programming a cooperative-driven intentional co-working guild for social good. Support structure for growing non-profits & social entrepreneurs, testing ground for 'social algorithms'. (Architectural design, budgeting, coordinating construction, programming, organizing, the whole shebang.)""",
+  "url": "http://www.primeproduce.org/",
+  "logo": "primeproducelogo.png",
+  "more": "index.html",
+  "twobytwo": {
+    "scores": {
+      "playfulness": 0.5,
+      "infrastructureness": 1.0
+    }
+  }
+
+}

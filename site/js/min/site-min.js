@@ -1,1 +1,0 @@
-Site={},$(document).ready(function(){Mobile.init(),Events.init(),0==Mobile.checkIfMobile()?Desktop.init():($(body).addClass("mobile"),Mobile.init()),"undefined"!=typeof Projects&&Projects.init()});

@@ -4,7 +4,7 @@
   "description": "A website that wants to be viewed in motion.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp json & watchify site/js/Main.js --debug -v -o site/js/bundle.js & wait"
+    "start": "gulp json & watchify -t vueify -e site/SHARED/js/Main.js --debug -v -o site/SHARED/js/bundle.js & wait"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-json-concat": "0.0.5",
+    "gulp-triplet": "^1.2.1",
     "vueify": "^9.4.1"
   }
 }

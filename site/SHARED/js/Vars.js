@@ -22,17 +22,6 @@ Vars.interested_in = [
   "the kinds of people who read the source of websites"
 ];
 
-Vars.projects_to_show = {
-  "landscapes_of_profit": {
-    "title": "Landscapes Of Profit",
-    "description": "Landscapes of Profit is a visualization of a proposed “flip tax” of 1% on properties bought and sold within two years. The authors show that the tax would have generated $33.7 million last year to fund the City’s affordable space agenda: enough to build 150 new units of affordable housing or to secure 125 permanently affordable workspaces for nonprofits and small businesses.",
-    "seriousness": 0.4
-  },
-  "party_fortress": {
-    "title": "Party Fortress",
-    "description": "PF PFP FP blah blah blah",
-    "seriousness": 0.2
-  }
-};
+Vars.allProjects = require('../../DATA/projects/allprojects.json');
 
 module.exports = Vars;

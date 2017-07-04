@@ -1,0 +1,49 @@
+#projectgrid-wrapper {
+  top: 50vh;
+  left: 50vw;
+  margin-top: -40vmin;
+  margin-left: -40vmin;
+  position: absolute;
+  width: 80vmin;
+  height: 80vmin;
+  background: url('two_by_two_field.svg') no-repeat;
+
+  #projectgrid {
+    height: calc(100% - 60px);
+    width: calc(100% - 60px);
+    margin: 30px;
+    position: relative;
+  }
+
+  .projectitem {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    opacity: 0.8;
+    border-radius: 10px;
+
+    .title  {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+
+    .score {
+      font-family: Courier New;
+      font-size: 0.9em;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  body {
+    border: 3px solid pink;
+  }
+
+  .projectitem .score {
+    display: none;
+  }
+}
+

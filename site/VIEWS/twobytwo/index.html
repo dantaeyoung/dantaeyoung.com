@@ -1,0 +1,49 @@
+<html>
+<head>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<link href='../../../bower_components/opensans/openSans.css' rel='stylesheet' type='text/css'>
+<link href='../../../bower_components/averagesans/averageSans.css' rel='stylesheet' type='text/css'>
+<link href='../../SHARED/css/reset.css' rel='stylesheet' type='text/css'>
+<link href='../../SHARED/css/dantaeyoung.css' rel='stylesheet' type='text/css'>
+<link href='twobytwo.css' rel='stylesheet' type='text/css'>
+
+<script src="../../SHARED/js/bundle.js"></script>
+<script src="../../../node_modules/vue/dist/vue.min.js"></script>
+<script src="Twobytwo.js"></script>
+<script>
+$(document).ready(function() {
+  Main.init();
+  Twobytwo.init();
+});
+</script>
+
+<style>
+</style>
+
+
+</head>
+<body>
+<div class="container">
+
+<div id="projectgrid-wrapper">
+  <div id="projectgrid">
+    <div v-for="(item, key) in projects" :style="itemStyle(item)" class="projectitem">
+      <a class="title" :href="'/projects/' + key + '/'">{{ item.title }}</a>
+      <!--<div>{{ item.description }}</div>-->
+      <div class="score">infrastructure_score: {{ item.twobytwo.scores.infrastructureness }}</div>
+      <div class="score">playful_score: {{ item.twobytwo.scores.playfulness }}</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+  <div class="backgrounds">
+    <div id="background-over" class="background"></div>
+    <div id="background-under" class="background"></div>
+  </div>
+
+	</body>
+</html>
+
+
