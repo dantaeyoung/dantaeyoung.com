@@ -23,6 +23,10 @@
   opacity: 0.8;
   border-radius: 10px;
   margin: 5px 5px 5px 5px; }
+  .projectitem em {
+    font-weight: 700; }
+  .projectitem strong {
+    font-style: italic; }
   .projectitem .previewImage {
     max-width: 300px;
     max-height: 300px; }
@@ -45,6 +49,9 @@
 .projectitem, .projectitem * {
   transition: all 700ms cubic-bezier(0.86, 0, 0.07, 1); }
 
+#twobytwo-wrapper, #biglist {
+  transition: all 700ms cubic-bezier(0.86, 0, 0.07, 1); }
+
 body .projectitem > * {
   opacity: 0;
   max-height: 0 !important; }
@@ -64,7 +71,7 @@ body.dataView .projectitem .fulldata {
   opacity: 1;
   max-height: 300px !important; }
 
-body.explanationView .projectitem .title, body.explanationView .projectitem .description {
+body.explanationView .projectitem .description {
   opacity: 1;
   max-height: 300px !important; }
 
@@ -72,7 +79,8 @@ body.analogyView .projectitem .title, body.analogyView .projectitem .analogy {
   opacity: 1;
   max-height: 300px !important; }
 
-body.twobytwoView #biglist-wrapper {
+#twobytwo-wrapper {
+  opacity: 0;
   top: 50vh;
   left: 50vw;
   margin-top: -40vmin;
@@ -80,5 +88,20 @@ body.twobytwoView #biglist-wrapper {
   position: absolute;
   width: 80vmin;
   height: 80vmin;
-  background: url("two_by_two_field.svg") no-repeat;
-  border: 10px solid green; }
+  background: url("two_by_two_field.svg") no-repeat; }
+
+body.twobytwoView #biglist {
+  opacity: 1;
+  top: 50vh;
+  left: 50vw;
+  margin-top: -40vmin;
+  margin-left: -40vmin;
+  position: absolute;
+  width: 80vmin !important;
+  height: 80vmin !important; }
+body.twobytwoView #twobytwo-wrapper {
+  opacity: 1; }
+body.twobytwoView .projectitem {
+  position: absolute; }
+  body.twobytwoView .projectitem .title {
+    opacity: 1; }

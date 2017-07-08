@@ -38,6 +38,14 @@ $media-phone: "only screen and (max-width: 500px)";
   border-radius: 10px;
   margin: 5px 5px 5px 5px;
 
+  em {
+    font-weight: 700;
+  }
+
+  strong {
+    font-style: italic;
+  }
+
   .previewImage {
     max-width: 300px;
     max-height: 300px;
@@ -72,6 +80,10 @@ $media-phone: "only screen and (max-width: 500px)";
 .projectitem, .projectitem  * { 
   transition: all 700ms cubic-bezier(0.86, 0, 0.07, 1);
 }
+#twobytwo-wrapper, #biglist {
+  transition: all 700ms cubic-bezier(0.86, 0, 0.07, 1);
+}
+
 
 
 $maxheightvar: 300px;
@@ -114,7 +126,7 @@ body.dataView {
 
 body.explanationView {
   .projectitem {
-    .title, .description {
+    .description {
       opacity: 1;
 			max-height: $maxheightvar !important;
     }
@@ -130,16 +142,43 @@ body.analogyView {
   }
 }
 
+#twobytwo-wrapper {
+  opacity: 0;
+  top: 50vh;
+  left: 50vw;
+  margin-top: -40vmin;
+  margin-left: -40vmin;
+  position: absolute;
+  width: 80vmin;
+  height: 80vmin;
+  background: url('two_by_two_field.svg') no-repeat;
+}
+
 body.twobytwoView {
-  #biglist-wrapper {
+
+  #biglist {
+    opacity: 1;
+    //top: calc((100vh - 80vmin)/2);
+    //left: calc((100vw - 80vmin)/2);
     top: 50vh;
     left: 50vw;
     margin-top: -40vmin;
     margin-left: -40vmin;
     position: absolute;
-    width: 80vmin;
-    height: 80vmin;
-    background: url('two_by_two_field.svg') no-repeat;
-    border: 10px solid green;
+    width: 80vmin !important;
+    height: 80vmin !important;
   }
+
+  #twobytwo-wrapper {
+    opacity: 1;
+  }
+
+  .projectitem {
+    position: absolute;
+    .title {
+      opacity: 1;
+    }
+  }
+
+
 }

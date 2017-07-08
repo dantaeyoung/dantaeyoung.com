@@ -3,6 +3,7 @@ Biglist = {};
 
 Biglist.init = function() {
 
+  console.log(marked('I am using __markdown__.'));
 
   Biglist.projectList = new Vue({
     el: '#biglist',
@@ -30,6 +31,7 @@ Biglist.init = function() {
       },
       positionStyle: function(item) {
         var s = "";
+        console.log(item);
         if(item.twobytwo.scores.playfulness < 0.5) { 
           s += "left: " + (item.twobytwo.scores.playfulness * 100) + "%;";
         } else {
@@ -45,7 +47,12 @@ Biglist.init = function() {
       },
       itemStyle: function(item) {
         var s = "";
+        s += this.positionStyle(item);
+        console.log(s);
         return s;
+      },
+      markdownize: function(text) {
+        return marked(text);
       }
     }
   });
@@ -60,7 +67,9 @@ Biglist.init = function() {
       picked: function(val, oldval) {
         if(oldval) { $("body").removeClass(oldval + "View"); }
         $("body").addClass(val + "View");
-         console.log(val);
+        console.log(val);
+        console.log(this);
+        if(val == "twobytwo") Biglist.moveTwobytwo();
       }
     },
     methods: {
@@ -69,6 +78,9 @@ Biglist.init = function() {
     }
   });
 
+  Biglist.moveTwobytwo = function() {
+
+  }
 
 }
 

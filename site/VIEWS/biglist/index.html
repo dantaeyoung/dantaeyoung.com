@@ -53,14 +53,13 @@ $(document).ready(function() {
 </div>
 
 <div id="biglist-wrapper">
-  <div id="twobytwo-wrapper"></div>
   <div id="biglist">
     <div v-for="(item, key) in projects" :style="itemStyle(item)" class="projectitem">
 
       <!--<div class="previewImage" v-if="item.previewImage"><img :src="'../../DATA/projects/'+ folderName(key) + '/' + item.previewImage" /></div>-->
       <div class="title"><a :href="item.url">{{ item.title }}</a></div>
-      <div class="description">{{ item.description }}</div>
-      <div class="casualdescription">{{ item.casualdescription }}</div>
+      <div class="description" v-html="markdownize(item.description)"></div>
+      <div class="casualdescription" v-html="markdownize(item.casualdescription)"></div>
       <div class="keywords">
         <span v-for="kw in item.keywords">{{ kw }}</span>
       </div>

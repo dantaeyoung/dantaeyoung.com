@@ -1,6 +1,7 @@
 $ = global.jQuery = require('jquery');
 jqueryTransit = require('jquery.transit');
 _ = require('lodash');
+global.marked = require('marked');
 
 gradientGenerator = require('../libs/gradientGenerator.js');
 
