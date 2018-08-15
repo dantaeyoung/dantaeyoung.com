@@ -8,8 +8,8 @@
     "Content-Type": "application/octet-stream",
     "Content-Disposition": "attachment; filename=karla.zip"
   },
-  "_source": "https://google-fonts.azurewebsites.net/googleFonts/karla?family=Karla",
+  "_source": "https://google-fonts.azurewebsites.net/googleFonts/karla?family=Karla:400,400i,700,700i",
   "_target": "*",
-  "_originalSource": "https://google-fonts.azurewebsites.net/googleFonts/karla?family=Karla",
+  "_originalSource": "https://google-fonts.azurewebsites.net/googleFonts/karla?family=Karla:400,400i,700,700i",
   "_direct": true
 }

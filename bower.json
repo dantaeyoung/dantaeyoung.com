@@ -19,6 +19,6 @@
     "lodash": "^4.17.4",
     "averagesans": "https://google-fonts.azurewebsites.net/googleFonts/averagesans?family=Average+Sans",
     "opensans": "https://google-fonts.azurewebsites.net/googleFonts/opensans?family=Open+Sans:400,700",
-    "karla": "https://google-fonts.azurewebsites.net/googleFonts/karla?family=Karla"
+    "karla": "https://google-fonts.azurewebsites.net/googleFonts/karla?family=Karla:400,400i,700,700i"
   }
 }
