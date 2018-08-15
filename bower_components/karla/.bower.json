@@ -1,0 +1,15 @@
+{
+  "name": "karla",
+  "main": [
+    "*.ttf",
+    "*.css"
+  ],
+  "_cacheHeaders": {
+    "Content-Type": "application/octet-stream",
+    "Content-Disposition": "attachment; filename=karla.zip"
+  },
+  "_source": "https://google-fonts.azurewebsites.net/googleFonts/karla?family=Karla",
+  "_target": "*",
+  "_originalSource": "https://google-fonts.azurewebsites.net/googleFonts/karla?family=Karla",
+  "_direct": true
+}
