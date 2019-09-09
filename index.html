@@ -2,81 +2,61 @@
 <head>
 <meta charset="utf-8"/>
 <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--<link href='bower_components/opensans/openSans.css' rel='stylesheet' type='text/css'>-->
-<!--<link href='bower_components/averagesans/averageSans.css' rel='stylesheet' type='text/css'>-->
 <link href='bower_components/karla/karla.css' rel='stylesheet' type='text/css'>
 <link href='css/dantaeyoung.css' rel='stylesheet' type='text/css'>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="libs/lodash.min.js"></script>
-<script src="libs/jquery.cursometer.1.0.0.min.js"></script>
-<script src="libs/gradientGenerator.js"></script>
-<script src="libs/gyro.js"></script>
 
-<script src="js/Sections.js"></script>
-<script src="js/Mobile.js"></script>
-<script src="js/Desktop.js"></script>
-<script src="js/Events.js"></script>
-<script src="js/Site.js"></script>
-<script>
-Vars = {};
-
-Vars.interested_in = [
-"critical engineering", 
-	"ethical architecture", 
-	"activist real estate", 
-	"tacit knowledge vs. explicit knowledge",
-	"clear ways of saying things (ala Richard Feynman)",
-	"how to use heuristics to do complex things in complex environments in a simple way",
-	"erratic Marxism",
-	"actor-network theory",
-	"cybernetics",
-	"lived experience over logical debate",
-	"computer science as philosophy",
-	"radical architecture happening through applied anthroplogy and activist real estate",
-	"non-hierarchical modes of collaboration", 
-	"spaces for communion/ownership",
-	"using technology and space to create social software",
-	"architecture as applied anthropology",
-	"ethical, effective pedagogy",
-	"space as a computational medium",
-	"how tools change the way we think",
-	"how space changes the way we think",
-	"the kinds of people who read the source of websites"
-	];
-
-	Vars.interested_in_post = ".";
-
-
-
-</script>
 </head>
 <body>
-<div class="container">
-	<div class="content">
+<div id="sections">
 
-		<div class="logo"><img src="img/logo_dtl.png"></div>
-		<div class="text">
-			<div class="bio">
-				<br>
-				Hi there. I am an assemblage of:
-				<ul>
-					<li>cooperatives / spaces / communities</li>
-					<li>learnings / teachings / practices</i>
-					<li>networks / systems / ecologies</li>
-					<li>bodies / technologies / habits</li>
-					<li>families / friends / societies / cultures</li>
-				</ul>
-				I am interested in:
-				<ul>
-					<li><span id="interested_in"></span></li>
-				</ul><br>
-				<hr />
+    <section id="myself">
+          <img src="img/logo_dtl.png">
+                <br>
+                <br>
+                Hi there. I am an assemblage of:
+                <ul>
+                  <li>cooperatives / spaces / technologies</li>
+                  <li>learnings / teachings / communities</li>
+                  <li>systems / heuristics / practices</li>
+                  <li>architecture / pedagogy / software</li>
+                  <li>families / friends / societies / cultures</li>
+                </ul>
 
-				Things I am thinking about lately (as of 2019-06):<br><br>
+                I am a learner, teacher, spatial designer, technologist, and sometimes artist, creating design tools, architectural spaces, and social collectives. I am interested in how our environments and relations change the way we think, feel, collaborate, and play together. I am especially excited about creating and maintaining inclusive and just spaces, organizations, and learning/working structures that are intentional about power, agency, and care.<br><br>
+                
+                I teach at Columbia University GSAPP, am a founding member of Prime Produce (an intentional community for social good), Soft Surplus (a space for , and the Cybernetics Library, an artist-run library focused on socio-technological systems.
+    </section id="myself">
+
+   <dots class="height200"></dots>
+
+    <section id="news">
+        <div class="title">Recent/Upcoming News</div>
+
+        <div class="spacedlist parse_this_as_markdown">
+- The Cybernetics Library will be holding an installation and workshop at the Tate Modern as part of the [Higher Resolution with Hyphen-Labs workshop series](https://www.tate.org.uk/whats-on/tate-modern/tate-exchange/workshop/higher-resolution) at the Tate Exchange. September 27-29, 2019.
+- Intentional Estate Agency, a collaboration with Tei Carpenter, Jesse LeCavalier, and Chris Woebken, will be part of the [Oslo Architecture Triennale: The Architecture of Degrowth](http://oslotriennale.no/en/om-oat-2019). Sep 26, 2019.
+- The Cybernetics Library will be holding a workshop at the [NY Art Book Fair](https://nyabf2019.printedmatterartbookfairs.org/Programs) on Sunday, September 22nd, at 2pm. Invited by Printed Matter.
+- I wrote [Tools of Collective Intelligence](https://urbanomnibus.net/2019/09/tools-of-collective-intelligence), published by Urban Omnibus, on invitation by Shannon Mattern. Sep 4, 2019.
+- I did a short Micro-residency at [Dynamicland](https://dynamicland.org/)! Aug 7 - Aug 14, 2019.
+- I was a speaker at [Software For Artists Day](https://pioneerworks.org/programs/software-for-artists-day-5/), Pioneer Works. June 15, 2019. 
+- An interview with Willa Köerner was published in The Creative Independent: [On growing a cooperative like you’d grow a garden](https://thecreativeindependent.com/people/designer-architect-teacher-and-learner-dan-taeyoung-on-growing-a-cooperative-like-youd-grow-a-garden/). June 11, 2019.
+- I was a resident as part of [The Strange Foundation's Decelerator residency program](https://thestrange.foundation/spring-2019-cohort). May 19 - May 27, 2019.
+- I spoke at the [Living a Digital Life: Objects, Environments, Power](https://www.living-a-digital-life.com/) conference, hosted at the University of Michigan's Taubman College of Architecture + Urban Planning. May 10, 2019.
+- The Cybernetics Library hosted a workshop called [Cybernetic Marginalia](http://thefebruary.school/), as part of February School, a temporary school-as-intervention created by MIT ACT students. 
+- I taught Ethicsware, a class at The School for Poetic Computation, as part of the [Code Societies Winter 2019](https://sfpc.io/codesocieties-winter-19/) session, organized by Melanie Hoff.
+        </div>
+    </section>
+
+    <dots class="height200"></dots>
+
+    <section id="thoughts">
+
+        <div class="title">Things I am thinking about lately</div>
+        (as of 2019-06)<br><br>
 <!--
 	Design is often about planning to arrive at an ideal future scenario -- an ideal aesthetics, an ideal construction, an ideal space, an ideal result. Sometimes, design and planning is the start of broadening possibilities, like designing a raised garden bed for an unknown myriad of future plants. Sometimes, design and planning is the narrowing down to a point, when we would like spaces to be built like our construction documents, paper pages to be printed like our screens, travel itineraries to mesh with a 8:42pm flight time. Is it possible to find an aesthetics that can accept broadening possibilities, without falling into the trap of being "modular", "movable", "open source"?<br/><br/> -->
 
-				Is an aesthetics ever possible without a power that maintains it? (Is aesthetics itself a manifestation of power in terms of form/vision/taste??)<br/><br/>
+        Is an aesthetics ever possible without a power that enforces it? Is aesthetics itself ever NOT a manifestation of power in terms of form/vision/taste?<br/><br/>
 
 				Feeling like the Other can be a good sign. It is (at least) a sign that I am being myself, when I am in white spaces. Maybe the problem is not the othering of people; it is the "Us"ing of people, the definition of a boundary in which "we" exist, the declaration of <a href="https://www.wired.co.uk/article/virtual-segregation-narrows-our-real-life-relationships">homophily</a> and sharedness that builds gated communities.<br /><br />
 
@@ -120,110 +100,110 @@ Vars.interested_in = [
 					<li>Michael Polanyi, <i><a href="files/Polanyi_Michael_The_Tacit_Dimension.pdf">The Tacit Dimension</a></i></li>
 				</ul>
 
-				<hr />
-				More things I am interested in: <a href="https://www.are.na/dan-taeyoung/channels?sort=random">are.na</a>
-				<hr />
-				<br><br>
-				A list of names: <br><br>
-				<div class="project">I've worked with 
-					<a href="http://sfpc.io/">The School for Poetic Computation</a>,  
-					<a href="https://www.newschool.edu/parsons/mfa-transdisciplinary-design/">Parsons School of Design</a>,  
-					<a href="https://thenewinquiry.com/simparty/">The New Inquiry</a>, 
-					<a href="https://www.vera.org/">Vera Institute of Justice</a>, 
-					<a href="http://pioneerworks.org/classes/data-cindy-sherman-query/">Pioneer Works</a>, 
-					<a href="http://designguggenheimhelsinki.org/">The Solomon R. Guggenheim Museum</a>, 
-					<a href="http://storefrontnews.org/">Storefront for Art and Architecture</a>, 
-					<a href="https://www.arch.columbia.edu/">Columbia University GSAPP</a>, 
-					<a href="http://www.spatialinformationdesignlab.org/">Spatial Information Design Lab, </a>
-					<a href="http://www.newinc.org/gsapp/">NEW INC/GSAPP Incubator, </a>
-					<!--	<a href="https://www.sidewalklabs.com/">Sidewalk Labs,</a> hmm. -->
-					<a href="http://www.audi.com/">Audi, </a>
-					and <a href="http://www.tsinghua.edu.cn/publish/ardeen/1685/index.html">Tsinghua University</a>. </div>
+                More things I am interested in: <a href="https://www.are.na/dan-taeyoung/channels?sort=random">are.na</a>
+     </section id="thoughts">
 
-				<div class="project">My work has been mentioned/published in 
-					<a href="https://thecreativeindependent.com/people/designer-architect-teacher-and-learner-dan-taeyoung-on-growing-a-cooperative-like-youd-grow-a-garden/">The Creative Independent</a>,
-					<a href="http://www.bloomsbury.com/us/the-politics-of-parametricism-9781472581662/">The Politics of Parametricism</a> (Bloomsbury Publishing, 2015), 
-					<a href="http://projectjournal.org/">Project Journal</a>, 
-					<a href="https://www.newyorker.com/business/currency/the-new-guilded-age">The New Yorker</a>, 
-					The Observer, 
-					The Awl, 
-					<a href="https://impact.vice.com/en_us/article/vbm593/artists-offer-tools-of-resistance-from-companies-collecting-personal-data">Vice</a>,
-					<a href="https://frieze.com/article/art-versus-silicon-valley-are-artists-losing-conceptual-advantage">Frieze,</a>
-					The New York Times, 
-					among other publications.</div>
-			</div>
+     <dots class="height200"></dots>
 
-			<hr>
+    <section id="names">
+        <div class="title">On work and projects</div>
+        <br><br>
 
-					<a href="http://www.textfiles.com/underconstruction/">website UNDER CONSTRUCTION. </a>
+        I teach, or have taught at 
+        <a href="https://www.arch.columbia.edu/">Columbia University GSAPP</a>, 
+        <a href="https://www.newschool.edu/parsons/mfa-transdisciplinary-design/">Parsons School of Design</a>,  
+        <a href="https://sfpc.io/">The School for Poetic Computation</a>, 
+        and <a href="http://www.tsinghua.edu.cn/publish/ardeen/1685/index.html">Tsinghua University</a>. 
 
-			<hr>
+        <br>
+        <br>
 
-			<!--		<a href="http://provolot.tumblr.com/"><b>RAW FEED (Tumblr)</b></a> -->
-			<!-- I mean, I commented this out, but you can still look at it.-->
-			<br>
-			<!-- THIS IS SO OUTDATED 
-			current projects (as of 2019-02):<br><br>
+            Past clients and collaborators include:
+        <a href="https://www.stephaniedinkins.com/">Stephanie Dinkins</a>, 
+        <a href="https://sidewalklabs.com/">Sidewalk Labs</a>,
+        <a href="http://www.superbright.me/">Superbright</a>, 
+        <a href="https://thenewinquiry.com/simparty/">The New Inquiry</a>, 
+        <a href="https://www.vera.org/">Vera Institute of Justice</a>, 
+        <a href="http://pioneerworks.org/">Pioneer Works</a>, 
+        <a href="http://designguggenheimhelsinki.org/en/exhibition/">The Solomon R. Guggenheim Museum</a>, 
+        <a href="http://storefrontnews.org/">Storefront for Art and Architecture</a>, 
+        <a href="http://www.spatialinformationdesignlab.org/">Spatial Information Design Lab, </a>
+        <a href="http://www.newinc.org/gsapp/">NEW INC/GSAPP Incubator</a>
 
-			<div class="project"><a href="http://www.newyorker.com/business/currency/the-new-guilded-age">Prime Produce</a> - co-organizing/co-programming a cooperative-driven intentional co-working guild for social good. Support structure for growing non-profits & social entrepreneurs, testing ground for 'social algorithms'. (Architectural design, budgeting, coordinating construction, programming, organizing, the whole shebang.)</div>
-			<div class="project"><a href="http://www.arch.columbia.edu/">Columbia University GSAPP</a> - adjunct assistant professor.<br>
-				Course coordinator and instructor for <i>Architectural Drawing and Representation 2</i>, instructor for <i>Metatool</i>, a critical/technological course about mobilizing technology to alter/modify/create new design possibilities, and <i>Viable Utopias</i>, a non-class experiment in self-pedagogy and shared facilitation.</div>
-			<div class="project"><a href="https://www.newschool.edu/parsons/mfa-transdisciplinary-design/">Parsons Transdisciplinary Design</a> - Part-time faculty.<br>
-				Faculty and co-instructor for Future Labors, a Fall 2017 Transdisciplinary Design studio on the future of work in Long Island City. </div> 
-			<div class="project"><a href="https://github.com/dantaeyoung/">github</a>, <a href="https://twitter.com/dantaeyoung">twitter</a></div>
+              <br/><br/> 
+              
+        My work has been mentioned/published in 
+        <a href="https://urbanomnibus.net/2019/09/tools-of-collective-intelligence/">Urban Omnibus</a>, 
+        <a href="https://thecreativeindependent.com/people/designer-architect-teacher-and-learner-dan-taeyoung-on-growing-a-cooperative-like-youd-grow-a-garden/">The Creative Independent</a>,
+        <a href="https://nathanschneider.info/books/everything-for-everyone/">Everything for Everyone: The Radical Tradition that Is Shaping the Next Economy</a>,
+        <a href="http://www.bloomsbury.com/us/the-politics-of-parametricism-9781472581662/">The Politics of Parametricism</a>,
+        <a href="http://projectjournal.org/">Project Journal</a>, 
+        <a href="https://www.newyorker.com/business/currency/the-new-guilded-age">The New Yorker</a>, 
+        The Observer, 
+        The Awl, 
+        Vice, 
+        The New York Times, 
+        among other publications.
+
+        <br>
+        <br>
+        <br>
+        <b>Things I do</b>: Collective decision-making facilitation, critical & technological curriculum design, architectural design, construction management, commercial real estate renovation, physical prototyping, digital fabrication, software development, web development, physical computing, data visualization.
+		<br>
+		<br>
+        <b>Things I specialize in</b>: Starting & maintaining community-run organizations, designing and building/renovating physical spaces for collective organizations, creating cooperative decision-making tools and practices, developing custom computational design workflows & tools, structuring open & collaborative pedagogy practices, critical & technological curriculum design, poetic technology experiments and workshops. 
+        <br>
+        <br>
+        <b>Long-term (10+ yr) goals</b>: Collectively designing, building, running, growing a cooperative school -- an intentional learning institution. 
+        <br>
+    </section id="names">
+    <dots class="height100"></dots>
+    <section id="sayhello">
+        <div class="title">say hello</div><br><br>
+        If you'd like to collaborate, work together, or say hello, get in touch at <b>dan [at] dantaeyoung [dot] com</b> !
+    </section id="sayhello">
 
 
-			<br>some past projects (a very partial list): <br><br>
+    <!--
+    <dots class="height100"></dots>
+    <section id="linktowork">
+        <div class="title">Selected Work</div>
+    </section id="linktowork"> 
+    -->
 
-			<div class="project">
-				<a href="http://azone.guggenheim.org/contributors">Guggenheim &#197;zone Futures Market</a>, 
-				<a href="http://www.thehighline.org/activities/sandbox-workshops-for-architecture-and-urban-planning-students">SANDBOX at the High Line</a>, 
-				<a href="http://storefrontnews.org/programming/measure/">Storefront for Art and Architecture - Measure</a>, 
-				<a href="http://storefrontnews.org/programming/measuring-architecture/">Manifesto Series: Measuring Architecture</a>, 
-				<a href="http://chicagoarchitecturebiennial.org/public-program/calendar/the-art-of-economy/">The Art of Economy, FOAM</a>
-			</div>
--->
-			<br>
-			say hello.<br>
-			<script language=Javascript type=text/javascript>
-<!--
-document.write('<a href="mai');
-document.write('lto');
-document.write(':&#100;&#97;&#110;');
-document.write('@');
-document.write('&#100;&#97;&#110;&#116;&#97;&#101;&#121;&#111;&#117;&#110;&#103;&#46;&#99;&#111;&#109;">');
-document.write('&#100;&#97;&#110;');
-document.write('@');
-document.write('&#100;&#97;&#110;&#116;&#97;&#101;&#121;&#111;&#117;&#110;&#103;&#46;&#99;&#111;&#109;<\/a>');
-// -->
-			</script><noscript>&#100;&#97;&#110; at 
-				&#100;&#97;&#110;&#116;&#97;&#101;&#121;&#111;&#117;&#110;&#103; dot &#99;&#111;&#109;</noscript>
-			<br><br>
-
-		</div>
-	</div>
-	<!-- Start of StatCounter Code --><script type="text/javascript">
-<!--//--><![CDATA[// ><!--
-
-var sc_project=6208969; 
-var sc_invisible=1; 
-var sc_security="858887fd"; 
-
-//--><!]]>
-	</script><script type="text/javascript" src="http://www.statcounter.com/counter/counter.js"></script><p></p><noscript><br /><div></div>
-		class="statcounter"&gt;<a title="drupal statistics module"></a>
-		href="http://www.statcounter.com/drupal/"<br />
-		target="_blank"&gt;<img class="statcounter" />
-		src="http://c.statcounter.com/6208969/0/858887fd/1/"<br />
-		alt="drupal statistics module" &gt;
-		<p></p></noscript>
-	<!-- End of StatCounter Code -->
 </div>
+
+
 <div class="backgrounds">
 	<div id="background-over" class="background"></div>
 	<div id="background-under" class="background"></div>
 </div>
-<div id="debug"></div>
+
+<script src="libs/marked.min.js"></script>
+<script>
+var elems = document.getElementsByClassName('parse_this_as_markdown');
+for (let i in elems) {
+    if(elems[i].innerHTML !== undefined) {
+        elems[i].innerHTML = marked(elems[i].innerHTML);
+    }
+}
+</script>
+
+<script src="libs/jquery-3.4.1.min.js"></script>
+
+<script src="libs/lodash.min.js"></script>
+<script src="libs/everpolate.browserified.min.js"></script>
+<script src="libs/jquery.cursometer.1.0.0.min.js"></script>
+<script src="libs/gradientGenerator.js"></script>
+<!--<script src="libs/gyro.js"></script>-->
+
+<!--<script src="js/Mobile.js"></script>-->
+<!--<script src="js/Desktop.js"></script>-->
+<script src="js/Events.js"></script>
+
+<script src="js/Site.js"></script>
+
+
 </body>
 </html>
 

@@ -1,21 +1,34 @@
-Events = {};
+var Events = {};
 
 Events.interestedN = 0;
 
-Events.randPastelPair = function() {
-    var difference = 0.4;  // 0 ~ 1; 0 = same, 1 = different colors
-    var spread = 0.3; // 0 ~ 1: 0 = always same/different, 1 = total randomness
+Events.randPastelVars = function() {
+    var difference = 0.6;  // 0 ~ 1; 0 = same, 1 = different colors
+    var spread = 0.4; // 0 ~ 1: 0 = always same/different, 1 = total randomness
 
     var hue1 = _.random(0, 360);
     var hue2 = (hue1 + _.random((180 * difference) - (180 * spread), (180 * difference) + (180 * spread))) % 360;
-    var lightness = _.random(70, 90);
+    var lightness = _.random(60, 90);
+    return [hue1, hue2, lightness]
+}
+
+
+Events.pastelPairFromVars = function(vars) {
+    var hue1 = vars[0];
+    var hue2 = vars[1];
+    var lightness = vars[2];
+
     var pastel1 = 'hsl(' + hue1 + ', 100%, ' + lightness + '%)';
     var pastel2 = 'hsl(' + hue2 + ', 100%, ' + lightness + '%)';
     return [pastel1, pastel2];
 }
 
+Events.randPastelPair = function() {
+    var vars = Events.randPastelVars();
+    return Events.pastelPairFromVars(vars);
+}
+
 Events.transitionGradients = function() {
-//    console.log("transitionGradeitns");
     var thisgradient = Events.randPastelPair();
 
     // make Under the same as Over, make Under opacity 1, OVer opacity 0
@@ -34,37 +47,70 @@ Events.transitionGradients = function() {
     }
 }
 
-
-Events.fadeTextIn = function() {
-    if(!$(".text").hasClass("fadingIn")) {
-        $(".text").removeClass("fadingOut").stop(true, false).addClass("fadingIn").fadeIn(500, function() { $(this).removeClass("fadingIn"); });
-    }
-} 
-
-Events.fadeTextOut = function() {
-    if(!$(".text").hasClass("fadingIn")) {
-        if(!$(".text").hasClass("fadingOut")) {
-            $(".text").stop(true, false).addClass("fadingOut").fadeOut(1000, function() { $(this).removeClass("fadingOut"); });
-        }
-    }
+function getScrollPercent() {
+    var h = document.documentElement,
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
+    return (h[st]||b[st]) / ((h[sh]||b[sh]) - (h.clientHeight||b.clientHeight)) * 100;
 }
 
-
-Events.termFade = function(selector, term) {
-    $(".term").fadeIn();
-    $(".term").fadeOut(200, function() { $(this).remove(); });
-    var thisTerm = $("<div class='term'>" + term + "</div>").hide().appendTo(selector).fadeIn(100);//.fadeOut(3000, function() { $(this).remove(); });
+function scrollPoints(n) {
+	return _.map(_.range(n), function(x) { return x * (100 / (n - 1)); })
 }
 
+function initInterpolation () {
 
-Events.incrementInterested = function() {
-//    console.log("incrementInterested");
-    Events.interestedN = (Events.interestedN || 0) + 1;
-    Events.interestedN %= (Vars.interested_in.length - 1);
-    Events.termFade("#interested_in", Vars.interested_in[Events.interestedN] + Vars.interested_in_post);
+    // we make four sets of lists -- for color 1 hue, color 2 hue, color 1 & 2 lightness, direction 
+    var sampleN = 3;  
+
+    var interparray = []
+    for(let i = 0; i < sampleN; i++) {
+        var pastelvars = Events.randPastelVars()
+        pastelvars[pastelvars.length] = _.random(0, 360, false)
+        interparray.push(pastelvars)
+    }
+    interparray = _.zip.apply(_, interparray) //transpose the array
+
+    // we now have x values and y values
+    var xValues = scrollPoints(sampleN);
+    var hue1Values = interparray[0]
+    var hue2Values = interparray[1]
+    var lightnessValues = interparray[2]
+    var directionValues = interparray[3]
+
+    Events.generateInterpolatedBackground = function(x) {
+        var vars = 
+           [everpolate.polynomial(x, xValues, hue1Values),
+            everpolate.polynomial(x, xValues, hue2Values),
+            everpolate.polynomial(x, xValues, lightnessValues)]
+        var pastelPair = Events.pastelPairFromVars(vars);
+        var dir = everpolate.polynomial(x, xValues, directionValues);
+
+        var backgroundString = "linear-gradient(" + dir + "deg, " + pastelPair[0] + ", " + pastelPair[1] + ")";
+
+        console.log(backgroundString);
+
+        $("#background-over").css({ background: backgroundString});
+    }
+
+
+    console.log(interparray)
+    return interparray
 }
 
 
 Events.init = function() {
-    Events.incrementInterested();
+
+    initInterpolation()
+        /*    window.gradient = setInterval(function() {
+        Events.transitionGradients();
+    }, 100000); */
+    var sp = getScrollPercent();
+    console.log( Events.generateInterpolatedBackground(sp));
+
+    $(window).scroll(function (event) {
+        var sp = getScrollPercent();
+        console.log( Events.generateInterpolatedBackground(sp));
+    });
 }
