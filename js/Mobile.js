@@ -88,6 +88,5 @@ Mobile.startGyro.prototype.checkAndRunEvents = function(gc) {
 
 Mobile.init = function() {
   window.m = new Mobile.startGyro();
-  m.addEvent(2, Events.incrementInterested);
   m.addEvent(4, Events.transitionGradients);
 }
