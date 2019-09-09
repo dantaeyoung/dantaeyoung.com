@@ -96,8 +96,6 @@ function initInterpolation () {
 
         var backgroundString = "linear-gradient(" + dir + "deg, " + pastelPair[0] + ", " + pastelPair[1] + ")";
 
-        console.log(backgroundString);
-
         $("#background-over").css({ background: backgroundString});
     }
 
@@ -127,8 +125,12 @@ Events.init = function() {
     var sp = getScrollPercent();
     console.log( Events.generateInterpolatedBackground(sp));
 
-    $(window).scroll(function (event) {
+    var scrollHandler = function () {
         var sp = getScrollPercent();
-        console.log( Events.generateInterpolatedBackground(sp));
-    });
+        console.log(sp)
+        Events.generateInterpolatedBackground(sp);
+    }
+
+    $(window).off("scroll");
+    $(window).scroll(scrollHandler);
 }
