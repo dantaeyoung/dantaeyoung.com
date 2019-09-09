@@ -3,12 +3,19 @@ var Events = {};
 Events.interestedN = 0;
 
 Events.randPastelVars = function() {
+
     var difference = 0.6;  // 0 ~ 1; 0 = same, 1 = different colors
     var spread = 0.4; // 0 ~ 1: 0 = always same/different, 1 = total randomness
 
     var hue1 = _.random(0, 360);
     var hue2 = (hue1 + _.random((180 * difference) - (180 * spread), (180 * difference) + (180 * spread))) % 360;
-    var lightness = _.random(60, 90);
+
+    if(window.darkmode == true) {
+        var lightness = _.random(10, 30);
+    } else {
+        var lightness = _.random(60, 90);
+    }
+
     return [hue1, hue2, lightness]
 }
 
@@ -101,6 +108,17 @@ function initInterpolation () {
 
 
 Events.init = function() {
+
+    if(typeof(window.darkmode) == "undefined") {
+        window.darkmode = false;
+    }
+
+    if(window.darkmode == true) {
+        $("body").addClass("darkmode");
+    } else {
+        $("body").removeClass("darkmode");
+    }
+
 
     initInterpolation()
         /*    window.gradient = setInterval(function() {

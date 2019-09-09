@@ -32,6 +32,11 @@ body {
 	color: #333;
 
 	background: linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1;
+
+    &.darkmode {
+        color: #EEE !important;
+    }
+
 }
 
 hr {
@@ -48,10 +53,14 @@ a {
 	font-weight: bold;
 	text-decoration: none;
 	border-bottom: 2px dotted #E3D940;
-}
 
-a:hover {
-	color: #BBB;
+    .darkmode & {
+        color: #FFF;
+    }
+
+    &:hover {
+        color: #BBB;
+    } 
 }
 
 
@@ -62,6 +71,7 @@ a:hover {
     flex-direction: column;
 	width: 500px;
 	padding: 40px;
+    padding-bottom: 100px;
 
     @include phone {
         padding: 15px;
@@ -72,16 +82,18 @@ a:hover {
 }
 
 
+#logo {
+    max-width: 180px;
+}
 section {
     //background-color: rgba(255, 255, 255, 0.7);
 /*    border-top: 3px solid #FFF;
     border-bottom: 3px solid #FFF;
     border-radius: 0px; */
-    width: calc(100% - 48px);
-    padding: 30px 20px;
+    width: calc(100% - 20px);
+    padding: 30px 10px;
 
     @include phone {
-        font-size: 0.90em;
         line-height: 1.5em;
     }
 
@@ -91,16 +103,21 @@ section {
         background-color: #F3E940;
         display: inline-block;
         padding: 3px 5px;
+
+        .darkmode & {
+            color: #333;
+        }
     }
 }
 
+ul {
+ padding-left: 20px;
+}
+
+
 .spacedlist {
     
-    & ul {
-        padding-left: 15px;
-    }
-
-    & li {
+         & li {
         margin-top: 30px;
     }
 }
@@ -111,6 +128,10 @@ dots {
     &.height400 { height: 400px; }
     width: calc(50% - 3px); 
     border-right: 5px dotted rgba(55,55,55,0.4);
+
+    .darkmode & {
+        border-right: 5px dotted rgba(195,195,195,0.7);
+    }
 }
 
 //* { border: 1px dotted #AAA; margin: -1px;  }
@@ -121,7 +142,7 @@ dots {
     -moz-transition: opacity 1s ease-in-out;
     -o-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;*/
-    opacity: 0.5;
+    opacity: 0.9;
 }
 
 .background {

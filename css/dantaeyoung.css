@@ -15,6 +15,8 @@ body {
   line-height: 1.5em;
   color: #333;
   background: linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1; }
+  body.darkmode {
+    color: #EEE !important; }
 
 hr {
   border: 1px solid #AAA;
@@ -25,9 +27,10 @@ a {
   font-weight: bold;
   text-decoration: none;
   border-bottom: 2px dotted #E3D940; }
-
-a:hover {
-  color: #BBB; }
+  .darkmode a {
+    color: #FFF; }
+  a:hover {
+    color: #BBB; }
 
 #sections {
   position: relative;
@@ -35,21 +38,24 @@ a:hover {
   display: flex;
   flex-direction: column;
   width: 500px;
-  padding: 40px; }
+  padding: 40px;
+  padding-bottom: 100px; }
   @media (max-width: 623px) {
     #sections {
       padding: 15px;
       width: calc(100vw - 30px); } }
 
+#logo {
+  max-width: 180px; }
+
 section {
   /*    border-top: 3px solid #FFF;
     border-bottom: 3px solid #FFF;
     border-radius: 0px; */
-  width: calc(100% - 48px);
-  padding: 30px 20px; }
+  width: calc(100% - 20px);
+  padding: 30px 10px; }
   @media (max-width: 623px) {
     section {
-      font-size: 0.90em;
       line-height: 1.5em; } }
   section .title {
     font-size: 1.0em;
@@ -57,9 +63,11 @@ section {
     background-color: #F3E940;
     display: inline-block;
     padding: 3px 5px; }
+    .darkmode section .title {
+      color: #333; }
 
-.spacedlist ul {
-  padding-left: 15px; }
+ul {
+  padding-left: 20px; }
 
 .spacedlist li {
   margin-top: 30px; }
@@ -73,13 +81,15 @@ dots {
     height: 200px; }
   dots.height400 {
     height: 400px; }
+  .darkmode dots {
+    border-right: 5px dotted rgba(195, 195, 195, 0.7); }
 
 .backgrounds {
   /*    -webkit-transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
     -o-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;*/
-  opacity: 0.5; }
+  opacity: 0.9; }
 
 .background {
   position: fixed;
