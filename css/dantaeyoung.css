@@ -1,3 +1,7 @@
+/* this is used:::
+@include phone { } 
+@include desktop { } 
+*/
 html, body {
   margin: 0px;
   padding: 0px; }
@@ -13,7 +17,7 @@ body {
   background: linear-gradient(70deg, #f7f6ea 0%, #ffffff 100%) #F8F8F1; }
 
 hr {
-  border: 1px solid white;
+  border: 1px solid #AAA;
   margin: 30px 0px; }
 
 #sections {
@@ -21,16 +25,33 @@ hr {
   flex-direction: column;
   width: 500px;
   padding: 40px; }
+  @media (max-width: 623px) {
+    #sections {
+      padding: 15px;
+      width: calc(100vw - 30px); } }
 
 section {
-  border: 1px solid #AAA;
-  border-radius: 10px;
-  padding: 40px;
-  width: 500px; }
+  background-color: white;
+  /*    border-top: 1px solid #AAA;
+    border-bottom: 1px solid #AAA;*/
+  border-radius: 20px;
+  width: calc(100% - 40px);
+  padding: 30px 20px; }
+  @media (max-width: 623px) {
+    section {
+      font-size: 0.95em; } }
+  section .title {
+    font-size: 1.0em;
+    font-weight: bold;
+    background-color: #F3E940;
+    display: inline-block;
+    padding: 3px 5px; }
+
+.spacedlist li {
+  margin-top: 40px; }
 
 dots {
-  width: calc(50% + 40px + 2px);
-  /* padding plus half of border */
+  width: calc(50% - 2px);
   border-right: 4px dotted #AAA; }
   dots.height100 {
     height: 100px; }
@@ -38,10 +59,6 @@ dots {
     height: 200px; }
   dots.height400 {
     height: 400px; }
-
-.mobile .content {
-  width: 400px;
-  padding: 20px; }
 
 .backgrounds {
   -webkit-transition: opacity 1s ease-in-out;

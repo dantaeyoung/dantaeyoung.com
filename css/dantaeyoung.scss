@@ -1,3 +1,22 @@
+$desktop-width: 624px;
+
+@mixin phone {
+  @media (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+/* this is used:::
+@include phone { } 
+@include desktop { } 
+*/
+
 html, body {
 	margin: 0px;
 	padding: 0px;
@@ -15,9 +34,11 @@ body {
 }
 
 hr {
-  border: 1px solid white;
+  border: 1px solid #AAA;
   margin: 30px 0px;
 }
+
+br {
 
 }
 
@@ -26,31 +47,50 @@ hr {
     flex-direction: column;
 	width: 500px;
 	padding: 40px;
+
+    @include phone {
+        padding: 15px;
+        width: calc(100vw - 30px);
+    }
+
+
 }
 
 
 section {
-    border: 1px solid #AAA;
-    border-radius: 10px;
-    padding: 40px;
-    width: 500px;
+    background-color: white;
+/*    border-top: 1px solid #AAA;
+    border-bottom: 1px solid #AAA;*/
+    border-radius: 20px;
+    width: calc(100% - 40px);
+    padding: 30px 20px;
+
+    @include phone {
+        font-size: 0.95em;
+    }
+
+    & .title {
+        font-size: 1.0em;
+        font-weight: bold;
+        background-color: #F3E940;
+        display: inline-block;
+        padding: 3px 5px;
+    }
+}
+
+.spacedlist li {
+    margin-top: 40px;
 }
 
 dots {
     &.height100 { height: 100px; }
     &.height200 { height: 200px; }
     &.height400 { height: 400px; }
-    width: calc(50% + 40px + 2px); /* padding plus half of border */
+    width: calc(50% - 2px); 
     border-right: 4px dotted #AAA;
 }
 
 //* { border: 1px dotted #AAA; margin: -1px;  }
-
-.mobile .content {
-	width: 400px;
-    padding: 20px;
-}
-
 
 
 .backgrounds {

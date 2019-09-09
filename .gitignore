@@ -1,4 +1,4 @@
 *.swp
 /js/min
 .DS_Store
-config.codekit
+config.codekit*
