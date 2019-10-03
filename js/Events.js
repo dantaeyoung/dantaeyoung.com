@@ -35,25 +35,6 @@ Events.randPastelPair = function() {
     return Events.pastelPairFromVars(vars);
 }
 
-Events.transitionGradients = function() {
-    var thisgradient = Events.randPastelPair();
-
-    // make Under the same as Over, make Under opacity 1, OVer opacity 0
-    // set Over as new gradient
-    // transition over to op 1
-
-    if($(".backgrounds").hasClass("transitioning") == false) {
-        $(".backgrounds").addClass("transitioning");
-        $("#background-under").attr("style", $("#background-over").attr("style")).fadeTo(0, 1.0);
-        $("#background-over").fadeTo(0, 0.0).gradientGenerator({
-            direction: _.random(0, 360, false) + "deg",
-            colors: [{color: thisgradient[0], percent: 0}, {color: thisgradient[1], percent: 100}]
-        }).fadeTo(1000, 1.0, function() {
-            $(".backgrounds").removeClass("transitioning");
-        });
-    }
-}
-
 function getScrollPercent() {
     var h = document.documentElement,
         b = document.body,
@@ -96,7 +77,7 @@ function initInterpolation () {
 
         var backgroundString = "linear-gradient(" + dir + "deg, " + pastelPair[0] + ", " + pastelPair[1] + ")";
 
-        $("#background-over").css({ background: backgroundString});
+        $(".scrollgradient").css({ background: backgroundString});
     }
 
 
@@ -119,15 +100,11 @@ Events.init = function() {
 
 
     initInterpolation()
-        /*    window.gradient = setInterval(function() {
-        Events.transitionGradients();
-    }, 100000); */
     var sp = getScrollPercent();
     console.log( Events.generateInterpolatedBackground(sp));
 
     var scrollHandler = function () {
         var sp = getScrollPercent();
-        console.log(sp)
         Events.generateInterpolatedBackground(sp);
     }
 

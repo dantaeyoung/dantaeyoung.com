@@ -79,7 +79,6 @@ a {
         width: calc(100vw - 30px);
     }
 
-
 }
 
 
@@ -144,6 +143,7 @@ dots {
     -o-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;*/
     opacity: 0.9;
+
 }
 
 .background {
@@ -160,3 +160,26 @@ dots {
 #background-under { z-index: 10; }
 
 
+body.project {
+
+    & .backgrounds {
+        opacity: 0.1;
+    }
+
+    & #sections {
+        margin: auto;
+    }
+}
+
+
+#nav {
+    z-index: 200;
+    padding: 5px;
+    position: relative;
+
+    #nav_logo {
+        img {
+            max-width: 100px;
+        }
+    }
+}
