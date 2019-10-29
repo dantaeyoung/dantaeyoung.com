@@ -3,7 +3,7 @@ Site = {};
 
 $(document).ready(function() {
     var thisHour = new Date().getHours();
-    if ( thisHour > 21 || thisHour < 6) {
+    if ( thisHour >= 21 || thisHour <= 6) {
         // in the wee hours of the night, the website turns dark.
         window.darkmode = true;
     }
